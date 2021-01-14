@@ -7,10 +7,15 @@ function changeColorJS() {
    document.getElementById("div1").style.backgroundColor = color;
 
 }
-function changeColorJQ(color) {
-   color = document.getElementById("color").value;
-   //alert(document.getElementById("div1").value);
-   alert($("#div1").remove());
-   document.getElementById("div1").value = color;
-   //setAttribute("background-color", color);
+
+function changeColorJQ() {
+   $("#div1").css("background-color", $("#color").val());
+}
+
+function toggle() {
+   $("#div3").fadeToggle("slow", callback);
+}
+function callback() {
+   if ($("#div3").is(":visible")) {$("#toggle").text("Hide div3");}
+   else {$("#toggle").text("Show div3");}
 }
