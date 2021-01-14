@@ -1,0 +1,15 @@
+div:hover {
+   font-weight: bold;
+}
+#div1 {
+   background-color: green;
+   font-size: 12px;
+}
+#div2 {
+   background-color: blue;
+   font-size: 12px;
+}
+#div3 {
+   background-color: orange;
+   font-size: 12px;
+}
