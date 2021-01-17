@@ -3,7 +3,7 @@
       <meta charset = "utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>Character</title>
-      <link rel="stylesheet" href="resources/Prove02.css">
+      <link rel="stylesheet" href="Resources/Prove02.css">
    </head>
    
    <body>
