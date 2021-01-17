@@ -19,7 +19,8 @@
             <?php print $_GET['gender']; ?>
          </div>
          <div class="col2">
-            <?php print $_GET['align'] $_GET['align1']; ?>
+            <?php print $_GET['align'];
+                  print $_GET['align1']; ?>
          </div>
          <div class="col3">
             <?php print $_GET['Class']; ?>
