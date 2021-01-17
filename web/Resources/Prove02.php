@@ -12,9 +12,7 @@
       </header>
       <div class="flex">
          <img src="https://cdnb.artstation.com/p/assets/images/images/006/017/293/large/kevin-furr-halfelfranger.jpg?1495455953" 
-             alt="Dungeons and Dragons Character" width="325" height="600">
-      </div>
-      <div>
+             alt="Dungeons and Dragons Character" width="160" height="300">
          <div class="col1">
             <?php print $_GET['gender']; ?>
          </div>
