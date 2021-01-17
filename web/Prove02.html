@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+   <head>
+      <meta charset = "utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Home Page </title>
+      <link rel="stylesheet" href="Resources\Prove02.css">
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script> -->
+      <!-- <script src="jsFuncts.js"> </script> -->
+      <!-- <script type='text/javascript'> </script> -->
+      <!-- <style> </style> -->
+   </head>
+   <body>
+		<header>
+			<h1> Welcome to Suzy's Home Page! </h1>
+			<a href = "indexProve.html"> CS 345 Assignments </a> <br>
+         <a href = "indexTeam.html"> CS 345 Team Assignments </a>
+		</header>
+		<hr/>
+      <div>
+         <p class="quote">
+            <q>Certainty of death. Small chance of success. What are we waiting for?</q> ~ Gimli
+         </p>
+         <p class="base">
+            Hello, my name is Suzy. I have lived in Albuquerque, New Mexico for almost my whole life
+            and love the heat there. I enjoy playing video games and Dungeons and Dragons, as well as
+            doing puzzles
+         </p>
+      </div>
+      <div class="flex">
+         <img src="https://cdnb.artstation.com/p/assets/images/images/006/017/293/large/kevin-furr-halfelfranger.jpg?1495455953" 
+             alt="Dungeons and Dragons Character" width="325" height="600">
+         <form id="form" action="Resources\Prove02.php">
+             <input type="reset">
+             <div class="flex">
+                 <div>
+                     Dungeons and Dragons Character Creation <br/>
+                     Character Name: <input type="text" name="CharacterName"> <br/>
+                     Ideal: <textarea name="Ideal" rows="5" cols="30"></textarea> <br/>
+                     Bond: <textarea name="Bond" rows="5" cols="30"></textarea> <br/>
+                     Flaw: <textarea name="Flaw" rows="5" cols="30"></textarea> <br/>
+                     Class:  
+                         <select name="Class">
+                             <option value="default">Select..</option>
+                             <option value="Barbarian">Barbarian</option>
+                             <option value="Bard">Bard</option>
+                             <option value="Cleric">Cleric</option>
+                             <option value="Druid">Druid</option>
+                             <option value="Fighter">Fighter</option>
+                             <option value="Monk">Monk</option>
+                             <option value="Paladin">Paladin</option>
+                             <option value="Ranger">Ranger</option>
+                             <option value="Rogue">Rogue</option>
+                             <option value="Sorcerer">Sorcerer</option>
+                             <option value="Warlock">Warlock</option>
+                             <option value="Wizard">Wizard</option>
+                         </select> <br/>
+                     Race:   
+                         <select name="Race">
+                             <option value="default">Select..</option>
+                             <option value="Dragonborn">Dragonborn</option>
+                             <option value="Dwarf">Dwarf</option>
+                             <option value="Elf">Elf</option>
+                             <option value="Gnome">Gnome</option>
+                             <option value="Half-Elf">Half-Elf</option>
+                             <option value="Half-Orc">Half-Orc</option>
+                             <option value="Halfling">Halfliing</option>
+                             <option value="Human">Human</option>
+                             <option value="Tiefling">Tiefling</option>
+                         </select> <br/>
+                     Gender: 
+                         <input type="radio" name="gender" value="male"> Male
+                         <input type="radio" name="gender" value="female"> Female <br/>
+                     Alignment:<br/>
+                         <input type="radio" name="align" value="chaotic"> Chaotic
+                         <input type="radio" name="align" value="neutral"> Neutral
+                         <input type="radio" name="align" value="lawful"> Lawful <br/>
+                         <input type="radio" name="align1" value="evil"> Evil
+                         <input type="radio" name="align1" value="neutral"> Neutral
+                         <input type="radio" name="align1" value="good"> Good <br/>
+                 </div>
+                 <div>
+                     Skills:<br/>
+                         <input type="checkbox" name="skills" value="Acrobatics">Acrobatics<br/>
+                         <input type="checkbox" name="skills" value="Animal">Animal Handling<br/>
+                         <input type="checkbox" name="skills" value="Arcana">Arcana<br/>
+                         <input type="checkbox" name="skills" value="Athletics">Athletics<br/>
+                         <input type="checkbox" name="skills" value="Deception">Deception<br/>
+                         <input type="checkbox" name="skills" value="History">History<br/>
+                         <input type="checkbox" name="skills" value="Insight">Insight<br/>
+                         <input type="checkbox" name="skills" value="Intimidation">Intimidation<br/>
+                         <input type="checkbox" name="skills" value="Investigation">Investigation<br/>
+                         <input type="checkbox" name="skills" value="Medicine">Medicine<br/>
+                         <input type="checkbox" name="skills" value="Nature">Nature<br/>
+                         <input type="checkbox" name="skills" value="Perception">Perception<br/>
+                         <input type="checkbox" name="skills" value="Performance">Performance<br/>
+                         <input type="checkbox" name="skills" value="Persuasion">Persuasion<br/>
+                         <input type="checkbox" name="skills" value="Religion">Religion<br/>
+                         <input type="checkbox" name="skills" value="Sleight of Hand">Sleight of Hand<br/>
+                         <input type="checkbox" name="skills" value="Stealth">Stealth<br/>
+                         <input type="checkbox" name="skills" value="Survival">Survival<br/>
+                 </div>
+             </div>
+             <input type="submit" style="border:auto;">
+             <br/><br/><br/>
+             <a href="http://www.enworld.org/forum/rpgdownloads.php?do=download&downloadid=1234"> Better Character Generator and my inspiration</a>
+         </form>
+     </div>
+   </body>
+</html>
