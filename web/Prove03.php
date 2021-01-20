@@ -31,7 +31,7 @@
                   document.getElementById("DEBUG").innerHTML = this.responseText;
                }
             };
-            xhttp.open("POST", <?php echo $cartPHP ?>, true);
+            xhttp.open("POST", <?php echo '$cartPHP' ?>, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             if(value == 'NAN') xhttp.send();
             else xhttp.send("type=ADD&item="+value);
