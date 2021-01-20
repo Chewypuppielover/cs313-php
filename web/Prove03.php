@@ -6,7 +6,6 @@
          "Druid" => 0, "Necromancer" => 0, "Holly" => 0);
    if(!isset($_SESSION["DEBUG"])) $_SESSION["DEBUG"] = true;
    $MAXCOL = 3;
-   $cartPHP = "Resources/Prove03_cart.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +30,7 @@
                   document.getElementById("DEBUG").innerHTML = this.responseText;
                }
             };
-            xhttp.open("POST", <?php echo "'$cartPHP'" ?>, true);
+            xhttp.open("POST", "Resources/Prove03_cartVar.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             if(value == 'NAN') xhttp.send();
             else xhttp.send("type=ADD&item="+value);
