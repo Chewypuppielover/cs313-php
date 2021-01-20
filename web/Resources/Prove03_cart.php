@@ -22,7 +22,7 @@
             xhttp.onreadystatechange = function() {
                if (this.readyState == 4 && this.status == 200) {
                   document.getElementById("DEBUG").innerHTML = this.responseText;
-                  document.getElementById(item).innerText = number-1 + "... " + item +
+                  document.getElementById(item).innerHTML = number-1 + "... " + item +
                      "<br><button onclick=\'AJAX(" + item + "," + number + ")\'>Remove from Cart</button>";
                }
             };
