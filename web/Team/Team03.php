@@ -3,7 +3,7 @@
     <title>PHP Test</title>
   </head>
   <body>
-    <form action="Resources/display.php" method="POST">
+    <form action="Resources/Team03.php" method="POST">
         <label for="name">Name: </label>
         <input type="text" id="name" name="name"> </br>
         <label for="Email">Email: </label>
