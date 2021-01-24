@@ -70,7 +70,6 @@
                unset($_POST["End_Session"]);
                unset($_SESSION["cart"]);
                   if($_SESSION["DEBUG"]) print_r($_SESSION);
-               header("Refresh:0");
             }
             else {
                echo '<form method="post">';
