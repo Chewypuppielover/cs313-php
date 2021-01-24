@@ -17,7 +17,7 @@
                   console.log(this.responseText);
                }
             };
-            xhttp.open("POST", "/Resources/Prove03_checkout.php", true);
+            xhttp.open("POST", "/Resources/Prove03_cartVar.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send();
          }
@@ -66,14 +66,13 @@
             <label>City: <input type="text" name="city"></label>
             <label> State: <input type="text" name="state"></label>
             <label> Zip Code: <input type="text" name="zip" size="4"></label> </br>
-            <input type="submit" name="End_Session" value="Finalize">
+            <input type="submit" name="Payment" value="Finalize">
          </form>
       </div>
       <div>
          <?php
             echo "Debug Div";
-            if(isset($_POST["End_Session"])) {
-               echo $_POST["street"] . " " . $_POST["apt"] . "</br>" . $_POST["city"] . ", " . $_POST["state"] . ", " . $_POST["zip"];
+            if(isset($_POST["Payment"])) {
                if($_SESSION["DEBUG"]) {
                   $_SESSION['DBCOUNT'] += 1;
                   echo "ending session " . $_SESSION['DBCOUNT'] . "<br>";

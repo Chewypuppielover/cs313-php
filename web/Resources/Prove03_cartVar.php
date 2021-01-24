@@ -7,6 +7,11 @@
    if($_REQUEST["type"] == "ADD") $_SESSION["cart"][$item] += 1;
    if($_REQUEST["type"] == "REMOVE") $_SESSION["cart"][$item] -= 1;
       if($_SESSION["DEBUG"]) echo "<pre>SESSION ", print_r($_SESSION, true),"</pre>";
+      
+      
+   if(isset($_REQUEST["Payment"]) {
+      echo $_POST["street"] . " " . $_POST["apt"] . "</br>" . $_POST["city"] . ", " . $_POST["state"] . ", " . $_POST["zip"];
+   }
 ?>
 
 <?php/*
