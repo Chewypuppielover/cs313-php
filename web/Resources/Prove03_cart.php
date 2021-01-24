@@ -22,17 +22,13 @@
             xhttp.onreadystatechange = function() {
                if (this.readyState == 4 && this.status == 200) {
                   document.getElementById("DEBUG").innerHTML = this.responseText;
-                  document.getElementById(item).innerHTML = number-1 + "... " + item + "<br><button onclick=\'AJAX(" + item + "," + number + ")\'>Remove from Cart</button>";
+                  document.getElementById(item).innerHTML = (number-1) + "... " + item + "<br><button onclick=\'AJAX('" + item + "','" + number + "')\'>Remove from Cart</button>";
                }
             };
             xhttp.open("POST", "Prove03_cartVar.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             if(item == 'NAN') xhttp.send();
             else xhttp.send("type=REMOVE&item="+item);
-         }
-         
-         function callback(element){
-            
          }
       </script>
    </head>
@@ -48,9 +44,12 @@
       </div>
       <header style="text-align:center;">
          <h1>Sally's Terrible Store </h1>
-         <a href="../Prove03.php"> Products </a>
+         <a href="/Prove03.php"> Products </a> </br>
       </header>
       <hr/>
+      <form action="/Resources/Prove03_checkout.php">
+         <input type="submit" id="chkout" value="Checkout">
+      </form>
       <table id="cart">
          <th> Products in Cart</th>
          <?php
@@ -81,7 +80,7 @@
             if(isset($_POST["End_Session"])) {
                if($_SESSION["DEBUG"]) {
                   $_SESSION['DBCOUNT'] += 1;
-                  echo "ending session ",$_SESSION['DBCOUNT'],"<br>";
+                  echo "ending session " . $_SESSION['DBCOUNT'] . "<br>";
                }
                unset($_POST["End_Session"]);
                unset($_SESSION["cart"]);
