@@ -26,8 +26,7 @@
                      document.getElementById(item).innerHTML = number-1 + "... " + item + "<br><button disabled>Go back to Product to add</button>";
                   }
                   else {
-                     temp = "\"AJAX('" + item + "', '" + number + "')\"";
-                     console.log(temp);
+                     temp = "\"AJAX('" + item + "', '" + (number-1) + "')\"";
                      document.getElementById(item).innerHTML = number-1 + "... " + item + "<br><button onclick=" + temp + ">Remove from Cart</button>";
                   }
                }
