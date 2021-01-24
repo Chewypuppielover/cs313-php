@@ -49,12 +49,14 @@
          <p class=h3>Products in Cart</p>
          <?php
             $count = 0;
+            echo "<table>";
             foreach($_SESSION["cart"] as $item => $x) {
                if ($x != 0) {
                   $count += 1;
-                  echo "$item ..$x </br>";
+                  echo "<tr><td>$item</td> <td>..$x</td></tr>";
                }
             }
+            echo "</table>";
             if($count == 0) echo "<h4>No items in Cart</h4>";
          ?>
          </br>
@@ -62,7 +64,7 @@
       <div id="main">
          <?php
             if(isset($_POST["Payment"])) {
-               echo $_POST["street"] . " " . $_POST["apt"] . "</br>" . $_POST["city"] . ", " . $_POST["state"] . ", " . $_POST["zip"];
+               echo $_POST["street"] . " Apt. " . $_POST["apt"] . "</br>" . $_POST["city"] . ", " . $_POST["state"] . ", " . $_POST["zip"];
                if($_SESSION["DEBUG"]) {
                   $_SESSION['DBCOUNT'] += 1;
                   echo "ending session " . $_SESSION['DBCOUNT'] . "<br>";
