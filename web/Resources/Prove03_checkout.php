@@ -17,7 +17,7 @@
                   console.log(this.responseText);
                }
             };
-            xhttp.open("POST", "/Resources/Prove03_cartVar.php", true);
+            xhttp.open("POST", "/Resources/Prove03_checkout.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send();
          }
@@ -60,14 +60,28 @@
          </br>
       </div>
       <div id="main">
-         <form method="post" onsubmit="AJAX();return false;">
-            <label>Street: <input type="text" name="street"></label>
-            <label> Apt #: <input type="text" name="apt" size="2"></label> </br>
-            <label>City: <input type="text" name="city"></label>
-            <label> State: <input type="text" name="state"></label>
-            <label> Zip Code: <input type="text" name="zip" size="4"></label> </br>
-            <input type="submit" name="Payment" value="Finalize">
-         </form>
+         <?php
+            if(isset($_POST["Payment"])) {
+               if($_SESSION["DEBUG"]) {
+                  $_SESSION['DBCOUNT'] += 1;
+                  echo "ending session " . $_SESSION['DBCOUNT'] . "<br>";
+               }
+               unset($_POST["End_Session"]);
+               unset($_SESSION["cart"]);
+                  if($_SESSION["DEBUG"]) print_r($_SESSION);
+               header("Refresh:0");
+            }
+            else {
+               echo '<form method="post">';
+               echo   '<label>Street: <input type="text" name="street"></label>';
+               echo   '<label> Apt #: <input type="text" name="apt" size="2"></label> </br>';
+               echo   '<label>City: <input type="text" name="city"></label>';
+               echo   '<label> State: <input type="text" name="state"></label>';
+               echo   '<label> Zip Code: <input type="text" name="zip" size="4"></label> </br>';
+               echo   '<input type="submit" name="Payment" value="Finalize">';
+               echo '</form>';
+            }
+         ?>
       </div>
       <div>
          <?php
