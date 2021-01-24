@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>Sally's Terrible Store Cart </title>
       <script type="text/javascript">
-         var DEBUG = true;
+         var DEBUG = false;
          window.onload = function() {
             if(DEBUG) {
                document.getElementById("DEBUG").style.display = "initial";
@@ -23,10 +23,12 @@
                if (this.readyState == 4 && this.status == 200) {
                   document.getElementById("DEBUG").innerHTML = this.responseText;
                   if (number-1 == 0) {
-                     document.getElementById(item).innerHTML = "${number-1}... ${item}<br><button disabled>Go back to Product to add</button>";
+                     document.getElementById(item).innerHTML = number-1 + "... " + item + "<br><button disabled>Go back to Product to add</button>";
                   }
                   else {
-                     document.getElementById(item).innerHTML = "${number-1}... ${item}<br><button onclick=\"AJAX('${item}', '${number}')\">Remove from Cart</button>";
+                     temp = "\"AJAX('" + item + "', '" + number + "')\"";
+                     console.log(temp);
+                     document.getElementById(item).innerHTML = number-1 + "... " + item + "<br><button onclick=" + temp + ">Remove from Cart</button>";
                   }
                }
             };

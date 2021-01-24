@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>Sally's Terrible Store Checkout </title>
       <script type="text/javascript">
-         var DEBUG = true;
+         var DEBUG = false;
          function AJAX() {
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {

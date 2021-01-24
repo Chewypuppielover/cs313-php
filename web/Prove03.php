@@ -4,7 +4,7 @@
          "Broken TV" => 0, "JarJar" => 0, "Pirate Magnet" => 0,
          "Cleric" => 0, "Sorcerer" => 0, "Ranger" => 0,
          "Druid" => 0, "Necromancer" => 0, "Holly" => 0);
-   if(!isset($_SESSION["DEBUG"])) $_SESSION["DEBUG"] = true;
+   if(!isset($_SESSION["DEBUG"])) $_SESSION["DEBUG"] = false;
    $MAXCOL = 3;
 ?>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>Sally's Terrible Store Products</title>
       <script type="text/javascript">
-         var DEBUG = true;
+         var DEBUG = false;
          window.onload = function() {
             if(DEBUG) {
                //alert("JS is Working, page loaded");
