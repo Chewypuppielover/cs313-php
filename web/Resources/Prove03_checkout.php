@@ -62,6 +62,7 @@
       <div id="main">
          <?php
             if(isset($_POST["Payment"])) {
+               echo $_POST["street"] . " " . $_POST["apt"] . "</br>" . $_POST["city"] . ", " . $_POST["state"] . ", " . $_POST["zip"];
                if($_SESSION["DEBUG"]) {
                   $_SESSION['DBCOUNT'] += 1;
                   echo "ending session " . $_SESSION['DBCOUNT'] . "<br>";
@@ -80,22 +81,6 @@
                echo   '<label> Zip Code: <input type="text" name="zip" size="4"></label> </br>';
                echo   '<input type="submit" name="Payment" value="Finalize">';
                echo '</form>';
-            }
-         ?>
-      </div>
-      <div>
-         <?php
-            echo "Debug Div";
-            if(isset($_POST["Payment"])) {
-               if($_SESSION["DEBUG"]) {
-                  $_SESSION['DBCOUNT'] += 1;
-                  echo "ending session " . $_SESSION['DBCOUNT'] . "<br>";
-               }
-               unset($_POST["End_Session"]);
-               unset($_SESSION["cart"]);
-                  if($_SESSION["DEBUG"]) print_r($_SESSION);
-               header("Refresh:0");
-               //session_unset(); session_destroy(); session_start();
             }
          ?>
       </div>
