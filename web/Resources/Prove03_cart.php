@@ -22,7 +22,12 @@
             xhttp.onreadystatechange = function() {
                if (this.readyState == 4 && this.status == 200) {
                   document.getElementById("DEBUG").innerHTML = this.responseText;
-                  document.getElementById(item).innerHTML = (number-1) + "... " + item + "<br><button onclick=\'AJAX('" + item + "','" + number + "')\'>Remove from Cart</button>";
+                  if (number-1 == 0) {
+                     document.getElementById(item).innerHTML = "${number-1}... ${item}<br><button disabled>Go back to Product to add</button>";
+                  }
+                  else {
+                     document.getElementById(item).innerHTML = "${number-1}... ${item}<br><button onclick=\"AJAX('${item}', '${number}')\">Remove from Cart</button>";
+                  }
                }
             };
             xhttp.open("POST", "Prove03_cartVar.php", true);

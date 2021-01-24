@@ -18,8 +18,7 @@
             };
             xhttp.open("POST", "/Resources/Prove03_checkout.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            if(item == 'NAN') xhttp.send();
-            else xhttp.send("type=REMOVE&item="+item);
+            xhttp.send();
          }
       </script>
    </head>
@@ -39,34 +38,21 @@
          <a href="/Resources/Prove03_cart.php"> Cart </a>
       </header>
       <hr/>
-      <table id="cart">
-         <th> Products in Cart</th>
+      <div id=cart>
+         <h3>Products in Cart</h3>
          <?php
-            $col = 0;
             $count = 0;
-            foreach($_SESSION["cart"] as $item => $x) {
-               if($x != 0) {
-                  $count += 1;
-                  if($col == 0) echo "<tr>";
-                  echo "<td id='$item'>$item ..$x</td>";
-                  $col += 1;
-                  if($col == $MAXCOL) {
-                     $col = 0;
-                     echo "</tr>";
-                  }
-               }
-            }
-            if($col != 0) echo "</tr>";
-            if($count == 0) echo "<tr><td> No items in Cart </td></tr>";
+            foreach($_SESSION["cart"] as $item => $x) echo "$item ..$x </br>";
+            if($count == 0) echo "<h4>No items in Cart</h4>";
          ?>
-      </table>
+      </div>
       <div id="main">
-         <form method="post" onsubmit="AJAX();return true;">
+         <form method="post" onsubmit="AJAX();return false;">
             <label>Street: <input type="text" name="street"></label>
-            <label> Apt #: <input type="text" name="apt"></label> </br>
+            <label> Apt #: <input type="text" name="apt" size="2"></label> </br>
             <label>City: <input type="text" name="city"></label>
             <label> State: <input type="text" name="state"></label>
-            <label> Zip Code: <input type="text" name="zip"></label>
+            <label> Zip Code: <input type="text" name="zip" size="4"></label>
             <input type="submit" name="End_Session" value="Finalize">
          </form>
       </div>
