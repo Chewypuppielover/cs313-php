@@ -45,7 +45,7 @@
             $count = 0;
             foreach($_SESSION["cart"] as $item => $x) {
                if ($x != 0) {
-                  count += 1;
+                  $count += 1;
                   echo "$item ..$x </br>";
                }
             }
