@@ -14,6 +14,7 @@
             xhttp.onreadystatechange = function() {
                if (this.readyState == 4 && this.status == 200) {
                   document.getElementById("main").innerHTML = this.responseText;
+                  console.log(this.responseText);
                }
             };
             xhttp.open("POST", "/Resources/Prove03_checkout.php", true);
@@ -42,7 +43,12 @@
          <h3>Products in Cart</h3>
          <?php
             $count = 0;
-            foreach($_SESSION["cart"] as $item => $x) echo "$item ..$x </br>";
+            foreach($_SESSION["cart"] as $item => $x) {
+               if ($x != 0) {
+                  count += 1;
+                  echo "$item ..$x </br>";
+               }
+            }
             if($count == 0) echo "<h4>No items in Cart</h4>";
          ?>
       </div>
