@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+   <head>
+      <meta charset = "utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Team04.sql</title>
+   </head>
+   <body>
+      <pre>
+   CREATE SCHEMA team04;
+   CREATE TABLE team04.users
+   (
+      id SERIAL NOT NULL PRIMARY KEY,
+      username VARCHAR(100) NOT NULL UNIQUE,
+      password VARCHAR(100) NOT NULL,
+      name VARCHAR(100) NOT NULL
+   );
+  
+   CREATE TABLE team04.speaker
+   (
+      id SERIAL NOT NULL PRIMARY KEY,
+      name VARCHAR(100) NOT NULL
+   );
+
+   CREATE TABLE team04.conference
+   (
+      id SERIAL NOT NULL PRIMARY KEY,
+      year SMALLINT NOT NULL,
+      is_spring BOOLEAN NOT NULL
+   );
+   
+   CREATE TABLE team04.session
+   (
+      id SERIAL NOT NULL PRIMARY KEY,
+      is_morning BOOLEAN,
+      is_saturday BOOLEAN,
+      is_womens BOOLEAN,
+      is_priesthoods BOOLEAN
+   );
+
+   CREATE TABLE team04.notes
+   (
+      id SERIAL NOT NULL PRIMARY KEY,
+      user_id INT NOT NULL REFERENCES team04.users(id),
+      speaker_id INT NOT NULL REFERENCES team04.speaker(id),
+      conference_id INT NOT NULL REFERENCES team04.conference(id),
+      session_id INT NOT NULL REFERENCES team04.session(id),
+      content TEXT NOT NULL
+   );
+      </pre>
+   </body>
+</html>
