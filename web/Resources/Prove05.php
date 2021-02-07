@@ -11,7 +11,7 @@
       "AND spells.save_id = s.id";
    
    try {
-      echo $db -> query($stm);
+      return $db -> query($stm);
    } catch (PDOException $ex) {
       echo "Error connecting to DB. Details: $ex";
       die();
