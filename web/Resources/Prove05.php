@@ -10,7 +10,7 @@
       AND spells.casting_time_id = ct.id
       AND spells.duration_id = d.id
       AND spells.save_id = s.id");
-   } catch () {
+   } catch (PDOException $ex) {
       echo "Error connecting to DB. Details: $ex";
       die();
    }
