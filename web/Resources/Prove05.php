@@ -12,7 +12,7 @@
    
    try {
       $res = $db -> query($stm);
-      print_r(pg_fetch_all($res));
+      print_r($res -> fetch_all());
    } catch (PDOException $ex) {
       echo "Error connecting to DB. Details: $ex";
       die();
