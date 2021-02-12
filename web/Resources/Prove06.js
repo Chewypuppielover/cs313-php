@@ -35,35 +35,35 @@ function initTable() {
             align: "center"
          }, {
             title: "Casting Time",
-            field: "lengths.casting_time_id",
+            field: "casting_time",
             sortable: true,
             align: "center"
          }, {
             title: "Source",
-            field: "sources.source_id",
+            field: "source",
             sortable: true,
             visible: false,
             align: "center"
          }, {
             title: "School",
-            field: "schools.school_id",
+            field: "school",
             sortable: true,
             visible: false,
             align: "center"
          }, {
             title: "Duration",
-            field: "lengths.duration_id",
+            //field: ["duration", "duration_type"],
             sortable: true,
             align: "center"
          }, {
             title: "Save/Attack",
-            field: "saves_attacks.save_id",
+            field: "save_attack",
             sortable: true,
             visible: false,
             align: "center"
          }, {
             title: "Range",
-            //field: ["range", "rannge_type"],
+            //field: ["range", "range_type"],
             sortable: true,
             visible: false,
             align: "center"
@@ -91,13 +91,13 @@ function initTable() {
             sortable: true,
             visible: false,
             align: "center"
-         }, {
+         }/* , {
             title: "Classes",
             field: "classes.class_id",
             visible: false,
             sortable: true,
             align: "center"
-      }]]
+      } */]]
    })
 }
 
