@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+   <head>
+      <meta charset = "utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Spellbook Keeper</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> <!-- bootstrap.css -->
+      <link rel="stylesheet" href="Resources/Prove05.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
+      <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css">
+      <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+      <!-- <script src="jsFuncts.js"> </script> -->
+      <!-- <script type='text/javascript'> </script> -->
+      <!-- <style> </style> -->
+   
+        <!-- data-click-to-select="true" -->
+        <!-- data-show-pagination-switch="true" -->
+   </head>
+   <body>
+      <header>
+         <h1>Spellbook Keeper</h1>
+         <div class='nav'>
+            <a class='nav-link' href="">Spells</a>
+            </br><a class='nav-link' href="">My Spellbooks</a>
+            </br><a class='nav-link' href="">Manage</a>
+         </div>
+         <hr/>
+      </header>
+            
+      <div id="toolbar">
+        <button id="remove" class="btn btn-danger" disabled>
+          <i class="fa fa-trash"></i> Delete
+        </button>
+      </div>
+      <div id="Spells">
+         Spells Table </br>
+         <table
+           id="table"
+           data-toolbar="#toolbar"     
+           data-search="true"
+           data-show-columns="true"
+           data-show-columns-toggle-all="true"
+           data-detail-view="true"
+           data-detail-formatter="detailFormatter"
+           data-minimum-count-columns="2"
+           data-pagination="true"
+           data-id-field="id"
+           data-page-list="[10, 25, 50, 100, all]"
+           data-show-footer="true"
+           data-side-pagination="server"
+           data-url="Resources/Prove06.php"
+           data-response-handler="responseHandler">
+         </table>
+      </div>
+      <script src="Resources/Prove06.js"> </script>
+      
+      <div id="My Spellbooks" class="collapse">
+         <h3>My Spellbooks</h3>
+      </div>
+      
+      <div id="Manage" class="collapse">
+         <h3>Manage</h3>
+      </div>
+   </body>
+</html>
