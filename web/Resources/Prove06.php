@@ -12,7 +12,8 @@
    
    try {
       $res = $db -> query($stm);
-      print_r($res -> fetchAll());
+      $all = $res -> fetchAll()
+      print_r(json_encode($all));
    } catch (PDOException $ex) {
       echo "Error connecting to DB. Details: $ex";
       die();
