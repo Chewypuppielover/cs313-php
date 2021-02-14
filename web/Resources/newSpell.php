@@ -22,11 +22,11 @@
       
       if($_SERVER['REQUEST_METHOD'] == 'POST') {
          //echo "POST caught";
-         print_r($_POST);
+         echo "<pre>" . $_POST . "</pre>";
          $com = implode(", ", $_POST['components']);
          echo $com . '</br>';
          $query = $db -> prepare($insert);
-         $query -> execute(['name' => $_POST['name'], 'school_id' => $_POST['school'],
+         $query -> bind(['name' => $_POST['name'], 'school_id' => $_POST['school'],
             'source_id' => $_POST['source'], 'casting_id' => $_POST['cast_id'],
             'duration_id' => $_POST['time_id'], 'casting_time' => $_POST['casting_time'], 
             'duration' => $_POST['duration'], 'lvl' => $_POST['level'], 'components' => $com,
@@ -35,6 +35,7 @@
             'component_desc' => $_POST['com_desc'], 'consumed' => isset($_POST['consumed']), 
             'description' => $_POST['description'], 'higher_desc' => $_POST['higher_desc'],
             'save_id' => $_POST['save'], 'area' => $_POST['area']]);
+         print_r($query);
          unset($_POST);
       }
    }
