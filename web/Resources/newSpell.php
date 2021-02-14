@@ -6,31 +6,31 @@
    try {
       $stm = $db->query('SELECT id, name FROM project1.schools');
       $schools = $stm -> fetchAll(PDO::FETCH_ASSOC);
-      print_r($schools);
+      //print_r($schools);
       $stm = $db->query('SELECT id, name FROM project1.sources');
       $sources = $stm -> fetchAll(PDO::FETCH_ASSOC);
-      print_r($sources);
+      //print_r($sources);
       $stm = $db->query('SELECT id, name FROM project1.classes');
       $classes = $stm -> fetchAll(PDO::FETCH_ASSOC);
-      print_r($classes);
+      //print_r($classes);
       $stm = $db->query('SELECT id, name FROM project1.lengths');
       $lengths = $stm -> fetchAll(PDO::FETCH_ASSOC);
-      print_r($lengths);
+      //print_r($lengths);
       $stm = $db->query('SELECT id, name FROM project1.saves_attacks');
       $saves = $stm -> fetchAll(PDO::FETCH_ASSOC);
-      print_r($saves);
+      //print_r($saves);
       
       if($_SERVER['REQUEST_METHOD'] == 'POST') {
-         echo "POST caught";
-         print_r($_POST);
+         //echo "POST caught";
+         //print_r($_POST);
          $com = implode(", ", $_POST['components']);
          $query = $db -> prepare($insert);
          $query -> execute(['name' => $_POST['name'], 'school_id' => $_POST['school'],
             'source_id' => $_POST['source'], 'casting_id' => $_POST['cast_id'], 'duration_id' => $_POST['time_id'],
             'casting_time' => $_POST['casting_time'], 'duration' => $_POST['duration'],
-            'lvl' => $_POST['level'], 'con' => $_POST['con'], 'ritual' => $_POST['ritual'],
+            'lvl' => $_POST['level'], 'con' => isset($_POST['con']), 'ritual' => isset($_POST['ritual']),
             'range' => $_POST['range'], 'range_type' => $_POST['range_type'], 'components' => $com,
-            'component_desc' => $_POST['com_desc'], 'consumed' => $_POST['consumed'], 
+            'component_desc' => $_POST['com_desc'], 'consumed' => isset($_POST['consumed']), 
             'description' => $_POST['description'], 'higher_desc' => $_POST['higher_desc'],
             'save_id' => $_POST['save'], 'area' => $_POST['area']]);
          print_r($query -> feth());
