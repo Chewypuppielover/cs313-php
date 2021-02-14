@@ -1,7 +1,7 @@
 <?php 
    require('DBconnect.php');
    $db = get_db();
-   $insert = 'INSERT INTO spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, save_id, area) 
+   $insert = 'INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, save_id, area) 
    VALUES (:name, :school_id, :source_id, :casting_id, :duration_id, :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc, :save_id, :area)';
    try {
       $schools = $db->query('SELECT id, name FROM project1.schools');
@@ -18,7 +18,7 @@
       //print_r($lengths);
       $saves = $db->query('SELECT id, name FROM project1.saves_attacks');
       $saves -> fetch(PDO::FETCH_ASSOC);
-      //print_r($saves);
+      print_r($saves);
       
       if($_SERVER['REQUEST_METHOD'] == 'POST') {
          echo "POST caught";
