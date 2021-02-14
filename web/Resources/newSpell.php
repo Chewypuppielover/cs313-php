@@ -10,12 +10,14 @@
       $classes-> fetch(PDO::FETCH_ASSOC);
       $lengths = $db->query('SELECT id, name FROM project1.lengths');
       $lengths-> fetch(PDO::FETCH_ASSOC);
+   }
    catch (PDOException $ex) {
       echo "Error connecting to DB. Details: $ex";
       die();
    }
 ?>
 <head><link rel="stylesheet" href="Prove06.css"></head>
+<body>
 <h2>Create New Spell</h2>
 <form method='' >
    <label>Spell Name: <input type='text' name='name'></input></label></br>
@@ -66,3 +68,4 @@
       echo "<label><input type='checkbox' name='classes[]' value='$id'>$class</label></br>";
    } ?>
 </form>
+</body>
