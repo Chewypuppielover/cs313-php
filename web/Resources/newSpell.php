@@ -24,7 +24,7 @@
          //echo "POST caught";
          print_r($_POST);
          $com = implode(", ", $_POST['components']);
-         echo $com . '\n';
+         echo $com . '</br>';
          $query = $db -> prepare($insert);
          $query -> execute(['name' => $_POST['name'], 'school_id' => $_POST['school'],
             'source_id' => $_POST['source'], 'casting_id' => $_POST['cast_id'],
@@ -35,13 +35,12 @@
             'component_desc' => $_POST['com_desc'], 'consumed' => isset($_POST['consumed']), 
             'description' => $_POST['description'], 'higher_desc' => $_POST['higher_desc'],
             'save_id' => $_POST['save'], 'area' => $_POST['area']]);
-         print_r($query -> feth());
          unset($_POST);
       }
    }
    catch (PDOException $ex) {
       echo "Error connecting to DB. Details: $ex";
-      echo $query -> fetch();
+      $query->debugDumpParams();
       die();
    }
 ?>
