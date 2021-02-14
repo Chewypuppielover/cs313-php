@@ -33,7 +33,7 @@
    </select></label>
    <label>School: <select name='school'>
       <?php foreach($schools as $row) {
-         echo "<option value='$row['id']'>$row['name']</option>";
+         echo "<option value='" .$row['id']. "'>" .$row['name']. "</option>";
       } ?>
    </select></label></br>
    
@@ -62,13 +62,13 @@
    
    <label>Book: <select name='source'>
       <?php foreach($sources as $row) {
-         echo "<option value='$row['id']'>$row['name']</option>";
+         echo "<option value='" .$row['id']. "'>" .$row['name']. "</option>";
       } ?>
    </select></label></br>
    
    Classes: </br>
    <?php foreach($classes as $row) {
-      echo "<label><input type='checkbox' name='classes[]' value='$row['id']'>$row['name']</label></br>";
+      echo "<label><input type='checkbox' name='classes[]' value='" .$row['id']. "'>" .$row['name']. "</label></br>";
    } ?>
    </br>
    <input type='submit'>Create Spell</input>
