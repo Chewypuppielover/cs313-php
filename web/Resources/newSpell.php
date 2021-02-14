@@ -22,9 +22,9 @@
       
       if($_SERVER['REQUEST_METHOD'] == 'POST') {
          //echo "POST caught";
-         //print_r($_POST);
+         print_r($_POST);
          $com = implode(", ", $_POST['components']);
-         echo $com;
+         echo $com . '\n';
          $query = $db -> prepare($insert);
          $query -> execute(['name' => $_POST['name'], 'school_id' => $_POST['school'],
             'source_id' => $_POST['source'], 'casting_id' => $_POST['cast_id'],
@@ -66,6 +66,7 @@
          } ?>
       </select></label></br>
       <label>Save or Attack: <select name='save'>
+         <option value=''>-</option>
          <?php foreach($saves as $row) {
             echo "<option value='" .$row['id']. "'>" . ucwords(strtolower($row['name'])) . "</option>";
          } ?>
