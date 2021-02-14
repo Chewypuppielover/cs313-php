@@ -1,6 +1,4 @@
 <?php
-   require('/Resources/DBconnect.php');
-   $db = get_db();
    $delete = 'DROP TABLE IF EXISTS project1.spells_by_class,
       project1.spells, project1.saves_attacks, project1.lengths,
       project1.classes, project1.schools, project1.sources, project1.users';
@@ -66,13 +64,29 @@
          spell_id INT NOT NULL REFERENCES project1.spells(id)
       )";
    
-   
-   $schools = $db->query("INSERT INTO project1.schools (name) VALUES ('conjuration'), ('necromancy'), ('evocation'), ('abjuration'), ('transmutation'), ('divination'), ('enchantment'), ('illusion')");
-   
-   $books = $db->prepare("INSERT INTO project1.sources (name) VALUES ('?'), ('?'), ('?'), ('?'), ('acquisitions incorporated'), ('?'), ('?'), ('lost laboratory of kwalish'), ('unearthed arcana'), ('custom')");
-   $books->execute(["player's handbook", "elemental evil player's companion", "xanathar's guide to everything", "sword coast adventurer's guide", "explorer's guide to wildemount", "guildmaster's guide to ravnica"]);
-   
-   $classes = $db->query("INSERT INTO project1.classes (name) VALUES ('artificer'), ('barbarian'), ('bard'), ('cleric'), ('druid'), ('fighter'), ('monk'), ('paladin'), ('ranger'), ('rouge'), ('sourcerer'), ('warlock'), ('wizard'), ('blood hunter')");
-   $lengths = $db->query("INSERT INTO project1.lengths (name) VALUES ('action'), ('bonus action'), ('reaction'), ('rounds'), ('years'), ('days'), ('hours'), ('minutes'), ('seconds')");
-   $saves = $db->query("INSERT INTO project1.saves_attacks (name) VALUES ('dex save'), ('str save'), ('con save'), ('int save'), ('wis save'), ('char save'), ('melee'), ('ranged')");
+   if($_SERVER['REQUEST_METHOD'] == 'POST') {
+      try {
+         require('../DBconnect.php');
+         $db = get_db();
+         
+         if($_POST['submit'] == 'delete') {
+            $db->query($delete);
+         }
+         if($_POST['submit'] == 'create') {
+            $schools = $db->query("INSERT INTO project1.schools (name) VALUES ('conjuration'), ('necromancy'), ('evocation'), ('abjuration'), ('transmutation'), ('divination'), ('enchantment'), ('illusion')");
+            
+            $books = $db->prepare("INSERT INTO project1.sources (name) VALUES ('?'), ('?'), ('?'), ('?'), ('acquisitions incorporated'), ('?'), ('?'), ('lost laboratory of kwalish'), ('unearthed arcana'), ('custom')");
+            $books->execute(["player's handbook", "elemental evil player's companion", "xanathar's guide to everything", "sword coast adventurer's guide", "explorer's guide to wildemount", "guildmaster's guide to ravnica"]);
+            
+            $classes = $db->query("INSERT INTO project1.classes (name) VALUES ('artificer'), ('barbarian'), ('bard'), ('cleric'), ('druid'), ('fighter'), ('monk'), ('paladin'), ('ranger'), ('rouge'), ('sourcerer'), ('warlock'), ('wizard'), ('blood hunter')");
+            $lengths = $db->query("INSERT INTO project1.lengths (name) VALUES ('action'), ('bonus action'), ('reaction'), ('rounds'), ('years'), ('days'), ('hours'), ('minutes'), ('seconds')");
+            $saves = $db->query("INSERT INTO project1.saves_attacks (name) VALUES ('dex save'), ('str save'), ('con save'), ('int save'), ('wis save'), ('char save'), ('melee'), ('ranged')");
+         }
+      } catch (PDOException $ex) {
+         echo "Error connecting to DB. Details: $ex";
+      }
 ?>
+<form method='POST'>
+   <input type='submit' name='submit' value='delete'>
+   <input type='submit' name='submit' value='create'>
+</form>
