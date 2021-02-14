@@ -20,7 +20,7 @@
       $saves -> fetch(PDO::FETCH_ASSOC);
       //print_r($saves);
       
-      if(isset($_METHOD['POST']) {
+      if(isset($_METHOD['POST'])) {
          print_r($_POST[]);
          $com = implode(", ", $_POST['components']);
          $query = $db -> prepare($insert);
