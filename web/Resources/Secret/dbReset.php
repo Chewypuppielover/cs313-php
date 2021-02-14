@@ -57,7 +57,7 @@
          if($_POST['submit'] == 'insert') {
             $schools = $db->query("INSERT INTO project1.schools (name) VALUES ('conjuration'), ('necromancy'), ('evocation'), ('abjuration'), ('transmutation'), ('divination'), ('enchantment'), ('illusion')");
             
-            $books = $db->prepare("INSERT INTO project1.sources (name) VALUES ('?'), ('?'), ('?'), ('?'), ('acquisitions incorporated'), ('?'), ('?'), ('lost laboratory of kwalish'), ('unearthed arcana'), ('custom')");
+            $books = $db->prepare("INSERT INTO project1.sources (name) VALUES (?), (?), (?), (?), ('acquisitions incorporated'), (?), (?), ('lost laboratory of kwalish'), ('unearthed arcana'), ('custom')");
             $books->execute(["player's handbook", "elemental evil player's companion", "xanathar's guide to everything", "sword coast adventurer's guide", "explorer's guide to wildemount", "guildmaster's guide to ravnica"]);
             
             $classes = $db->query("INSERT INTO project1.classes (name) VALUES ('artificer'), ('barbarian'), ('bard'), ('cleric'), ('druid'), ('fighter'), ('monk'), ('paladin'), ('ranger'), ('rouge'), ('sourcerer'), ('warlock'), ('wizard'), ('blood hunter')");
@@ -67,6 +67,8 @@
       } catch (PDOException $ex) {
          echo "Error connecting to DB. Details: $ex";
       }
+      unset($_POST);
+      unset($_SERVER['REQUEST_METHOD']);
    }
 ?>
 <form method='POST'>
