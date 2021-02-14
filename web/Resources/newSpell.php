@@ -33,7 +33,8 @@
             'component_desc' => $_POST['com_desc'], 'consumed' => $_POST['consumed'], 
             'description' => $_POST['description'], 'higher_desc' => $_POST['higher_desc'],
             'save_id' => $_POST['save'], 'area' => $_POST['area']]);
-         print_r($query);
+         print_r($query -> feth());
+         unset($_POST);
       }
    }
    catch (PDOException $ex) {
