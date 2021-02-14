@@ -22,9 +22,9 @@
       
       if($_SERVER['REQUEST_METHOD'] == 'POST') {
          //echo "POST caught";
-         echo "<pre>" . print_r($_POST) . "</pre>";
+         //print_r($_POST);
          $com = implode(", ", $_POST['components']);
-         echo $com . '</br>';
+         //echo $com . '</br>';
          $query = $db -> prepare($insert);
          $query -> bindValue(':name', $_POST['name'], PDO::PARAM_STR);
          $query -> bindValue(':school_id', $_POST['school'], PDO::PARAM_INT);
@@ -45,15 +45,15 @@
          $query -> bindValue(':description', $_POST['description'], PDO::PARAM_STR);
          $query -> bindValue(':higher_desc', $_POST['higher_desc'], PDO::PARAM_STR);
          $query -> bindValue(':area', $_POST['area'], PDO::PARAM_STR);
-         print_r($query);
+         //print_r($query);
          $query->execute();
          unset($_POST);
       }
    }
    catch (PDOException $ex) {
       echo "Error connecting to DB. Details: $ex";
-      $query->debugDumpParams();
-      die();
+      //$query->debugDumpParams();
+      //die();
    }
 ?>
 <head>
@@ -73,13 +73,13 @@
       </select></label>
       <label>School: <select name='school'>
          <?php foreach($schools as $row) {
-            echo "<option value='" .$row['id']. "'>" . ucwords(strtolower($row['name'])) . "</option>";
+            echo "<option value='" .$row['id']. "'>" .ucwords($row['name']). "</option>";
          } ?>
       </select></label></br>
       <label>Save or Attack: <select name='save'>
          <option value=''>-</option>
          <?php foreach($saves as $row) {
-            echo "<option value='" .$row['id']. "'>" . ucwords(strtolower($row['name'])) . "</option>";
+            echo "<option value='" .$row['id']. "'>" .ucwords($row['name']). "</option>";
          } ?>
       </select></label>
    </fieldset>
@@ -87,7 +87,7 @@
       <label>Casting Time: <input type='number' name='casting_time'></input></label>
       <label>Action: <select name='cast_id'>
          <?php foreach($lengths as $row) {
-            echo "<option value='" .$row['id']. "'>" . ucwords(strtolower($row['name'])) . "</option>";
+            echo "<option value='" .$row['id']. "'>" .ucwords($row['name']). "</option>";
          } ?>
       </select></label></br>
       
@@ -97,7 +97,7 @@
       <label>Duration: <input type='number' name='duration'></input></label>
       <label><select name='time_id'>
          <?php foreach($lengths as $row) {
-            echo "<option value='" .$row['id']. "'>" . ucwords(strtolower($row['name'])) . "</option>";
+            echo "<option value='" .$row['id']. "'>" .ucwords($row['name']). "</option>";
          } ?>
       </select></label></br>
       
@@ -122,13 +122,13 @@
    <fieldset> 
       <label>Book: <select name='source'>
          <?php foreach($sources as $row) {
-            echo "<option value='" .$row['id']. "'>" . ucwords(strtolower($row['name'])) . "</option>";
+            echo "<option value='" .$row['id']. "'>" .ucwords($row['name']). "</option>";
          } ?>
       </select></label></br>
       
       Classes: </br>
       <?php foreach($classes as $row) {
-         echo "<label><input type='checkbox' name='classes[]' value='" .$row['id']. "'/>" . ucwords(strtolower($row['name'])) . "</label></br>";
+         echo "<label><input type='checkbox' name='classes[]' value='" .$row['id']. "'/>" .ucwords($row['name']). "</label></br>";
       } ?>
    </fieldset>
       <input type='submit' value='Create Spell'/>
