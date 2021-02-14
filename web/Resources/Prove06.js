@@ -9,7 +9,7 @@ function a(link) {
 
 
 
-var $table = $('#table')
+var $table = $('#table');
 
 function responseHandler(res) {
    $.each(res.rows, function (i, row) {
