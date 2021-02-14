@@ -5,8 +5,8 @@
       $schools = $db->query('SELECT id, name FROM project1.schools');
       $schools -> fetch(PDO::FETCH_ASSOC);
       print_r($schools);
-      $scources = $db->query('SELECT id, name FROM project1.sources');
-      $scources -> fetch(PDO::FETCH_ASSOC);
+      $sources = $db->query('SELECT id, name FROM project1.sources');
+      $sources -> fetch(PDO::FETCH_ASSOC);
       print_r($sources);
       $classes = $db->query('SELECT id, name FROM project1.classes');
       $classes -> fetch(PDO::FETCH_ASSOC);
