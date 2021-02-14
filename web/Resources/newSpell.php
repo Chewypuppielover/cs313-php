@@ -26,15 +26,15 @@
          $com = implode(", ", $_POST['components']);
          echo $com . '</br>';
          $query = $db -> prepare($insert);
-         $query -> bind(['name' => $_POST['name'], 'school_id' => $_POST['school'],
-            'source_id' => $_POST['source'], 'casting_id' => $_POST['cast_id'],
-            'duration_id' => $_POST['time_id'], 'casting_time' => $_POST['casting_time'], 
-            'duration' => $_POST['duration'], 'lvl' => $_POST['level'], 'components' => $com,
-            'con' => isset($_POST['con']), 'ritual' => isset($_POST['ritual']), 
-            'range' => $_POST['range'], 'range_type' => $_POST['range_type'],
-            'component_desc' => $_POST['com_desc'], 'consumed' => isset($_POST['consumed']), 
-            'description' => $_POST['description'], 'higher_desc' => $_POST['higher_desc'],
-            'save_id' => $_POST['save'], 'area' => $_POST['area']]);
+         $query -> bindValue([':name' => $_POST['name'], ':school_id' => $_POST['school'],
+            ':source_id' => $_POST['source'], ':casting_id' => $_POST['cast_id'],
+            ':duration_id' => $_POST['time_id'], ':casting_time' => $_POST[':casting_time'], 
+            ':duration' => $_POST['duration'], ':lvl' => $_POST['level'], ':components' => $com,
+            ':con' => isset($_POST['con']), ':ritual' => isset($_POST['ritual']), 
+            ':range' => $_POST['range'], ':range_type' => $_POST['range_type'],
+            ':component_desc' => $_POST['com_desc'], ':consumed' => isset($_POST[':consumed']), 
+            ':description' => $_POST['description'], ':higher_desc' => $_POST[':higher_desc'],
+            ':save_id' => $_POST['save'], ':area' => $_POST['area']]);
          print_r($query);
          unset($_POST);
       }
