@@ -21,7 +21,7 @@
       //print_r($saves);
       
       if(isset($_METHOD['POST'])) {
-         print_r($_POST[]);
+         print_r($_POST);
          $com = implode(", ", $_POST['components']);
          $query = $db -> prepare($insert);
          $query -> execute(['name' => $_POST['name'], 'school_id' => $_POST['school'],
