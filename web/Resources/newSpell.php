@@ -4,12 +4,16 @@
    try {
       $schools = $db->query('SELECT id, name FROM project1.schools');
       $schools-> fetch(PDO::FETCH_ASSOC);
+      print_r($schools);
       $scources = $db->query('SELECT id, name FROM project1.sources');
       $scources-> fetch(PDO::FETCH_ASSOC);
+      print_r($sources);
       $classes = $db->query('SELECT id, name FROM project1.classes');
       $classes-> fetch(PDO::FETCH_ASSOC);
+      print_r($classes);
       $lengths = $db->query('SELECT id, name FROM project1.lengths');
       $lengths-> fetch(PDO::FETCH_ASSOC);
+      print_r($lengths);
    }
    catch (PDOException $ex) {
       echo "Error connecting to DB. Details: $ex";
@@ -17,7 +21,6 @@
    }
 ?>
 <head><link rel="stylesheet" href="Prove06.css"></head>
-<body>
 <h2>Create New Spell</h2>
 <form method='' >
    <label>Spell Name: <input type='text' name='name'></input></label></br>
@@ -67,5 +70,6 @@
    <?php foreach($classes as $id => $class) {
       echo "<label><input type='checkbox' name='classes[]' value='$id'>$class</label></br>";
    } ?>
+   </br>
+   <input type='submit'>Create Spell</input>
 </form>
-</body>
