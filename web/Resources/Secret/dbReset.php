@@ -85,6 +85,7 @@
       } catch (PDOException $ex) {
          echo "Error connecting to DB. Details: $ex";
       }
+   }
 ?>
 <form method='POST'>
    <input type='submit' name='submit' value='delete'>
