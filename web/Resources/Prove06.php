@@ -12,7 +12,7 @@
    
    try {
       $res = $db -> query($stm);
-      $all = $res -> fetchAll();
+      $all = $res -> fetchAll(PDO::FETCH_ASSOC);
       echo json_encode($all);
    } catch (PDOException $ex) {
       echo "Error connecting to DB. Details: $ex";

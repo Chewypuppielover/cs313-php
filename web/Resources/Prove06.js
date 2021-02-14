@@ -1,3 +1,14 @@
+function a(link) {
+   $('.tab').addClass('collapse');
+   $('.nav-link').prop('disabled', false);
+   //this.setAttribute('disabled');
+   $(link).removeClass('collapse');
+}
+
+
+
+
+
 var $table = $('#table')
 
 function responseHandler(res) {
@@ -13,7 +24,6 @@ function detailFormatter(index, row) {
    })
    return html.join('')
 }
-
 function initTable() {
    $table.bootstrapTable('destroy').bootstrapTable({
       height: 550,
