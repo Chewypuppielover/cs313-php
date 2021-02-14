@@ -73,6 +73,9 @@
             $db->query($delete);
          }
          if($_POST['submit'] == 'create') {
+            $db->query($create);
+         }
+         if($_POST['submit'] == 'insert') {
             $schools = $db->query("INSERT INTO project1.schools (name) VALUES ('conjuration'), ('necromancy'), ('evocation'), ('abjuration'), ('transmutation'), ('divination'), ('enchantment'), ('illusion')");
             
             $books = $db->prepare("INSERT INTO project1.sources (name) VALUES ('?'), ('?'), ('?'), ('?'), ('acquisitions incorporated'), ('?'), ('?'), ('lost laboratory of kwalish'), ('unearthed arcana'), ('custom')");
@@ -90,4 +93,5 @@
 <form method='POST'>
    <input type='submit' name='submit' value='delete'>
    <input type='submit' name='submit' value='create'>
+   <input type='submit' name='submit' value='insert'>
 </form>
