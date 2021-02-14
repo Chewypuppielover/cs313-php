@@ -4,7 +4,7 @@
    try {
       $schools = $db->query('SELECT id, name FROM project1.schools');
       $schools -> fetch(PDO::FETCH_ASSOC);
-      print_r($schools[0]);
+      print_r($schools);
       $scources = $db->query('SELECT id, name FROM project1.sources');
       $scources -> fetch(PDO::FETCH_ASSOC);
       print_r($sources);
