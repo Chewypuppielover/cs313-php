@@ -3,16 +3,16 @@
    $db = get_db();
    try {
       $schools = $db->query('SELECT id, name FROM project1.schools');
-      $schools-> fetch(PDO::FETCH_ASSOC);
-      print_r($schools);
+      $schools -> fetch(PDO::FETCH_ASSOC);
+      print_r($schools[0]);
       $scources = $db->query('SELECT id, name FROM project1.sources');
-      $scources-> fetch(PDO::FETCH_ASSOC);
+      $scources -> fetch(PDO::FETCH_ASSOC);
       print_r($sources);
       $classes = $db->query('SELECT id, name FROM project1.classes');
-      $classes-> fetch(PDO::FETCH_ASSOC);
+      $classes -> fetch(PDO::FETCH_ASSOC);
       print_r($classes);
       $lengths = $db->query('SELECT id, name FROM project1.lengths');
-      $lengths-> fetch(PDO::FETCH_ASSOC);
+      $lengths -> fetch(PDO::FETCH_ASSOC);
       print_r($lengths);
    }
    catch (PDOException $ex) {
@@ -32,8 +32,8 @@
       } ?>
    </select></label>
    <label>School: <select name='school'>
-      <?php foreach($schools as $x => $school) {
-         echo "<option value='$x'>$school</option>";
+      <?php foreach($schools as $row) {
+         echo "<option value='$row['id']'>$row['name']</option>";
       } ?>
    </select></label></br>
    
@@ -61,14 +61,14 @@
    <label>Spell Description at Higher Levels: <textarea name='higher_desc'></textarea></label></br>
    
    <label>Book: <select name='source'>
-      <?php foreach($sources as $x => $source) {
-         echo "<option value='$x'>$source</option>";
+      <?php foreach($sources as $row) {
+         echo "<option value='$row['id']'>$row['name']</option>";
       } ?>
    </select></label></br>
    
    Classes: </br>
-   <?php foreach($classes as $id => $class) {
-      echo "<label><input type='checkbox' name='classes[]' value='$id'>$class</label></br>";
+   <?php foreach($classes as $row) {
+      echo "<label><input type='checkbox' name='classes[]' value='$row['id']'>$row['name']</label></br>";
    } ?>
    </br>
    <input type='submit'>Create Spell</input>
