@@ -20,12 +20,13 @@
       $saves -> fetch(PDO::FETCH_ASSOC);
       //print_r($saves);
       
-      if(isset($_METHOD['POST'])) {
+      if(isset($_POST)) {
+         echo "POST caught";
          print_r($_POST);
          $com = implode(", ", $_POST['components']);
          $query = $db -> prepare($insert);
          $query -> execute(['name' => $_POST['name'], 'school_id' => $_POST['school'],
-            'source_id' => $_POST['source'], 'casting_id' => $_POST['cast_id'], 'duration_id' => $_POST['range_id'],
+            'source_id' => $_POST['source'], 'casting_id' => $_POST['cast_id'], 'duration_id' => $_POST['time_id'],
             'casting_time' => $_POST['casting_time'], 'duration' => $_POST['duration'],
             'lvl' => $_POST['level'], 'con' => $_POST['con'], 'ritual' => $_POST['ritual'],
             'range' => $_POST['range'], 'range_type' => $_POST['range_type'], 'components' => $com,
@@ -44,7 +45,7 @@
    <link rel="stylesheet" href="Prove06.css">
    <script src="Prove06.js"> </script>
 </head>
-<form method='POST' >
+<form method='POST'>
    <fieldset>
       <h2>Create New Spell</h2>
       <label>Spell Name: <input type='text' name='name'></input></label></br>
@@ -75,14 +76,14 @@
       </select></label></br>
       
       <label>Range: <input type='number' name='range'></input></label>
-      <label><select name='range_id'>
+      <label><input type='text' name='range_type'></input></label></br>
+      
+      <label>Duration: <input type='number' name='duration'></input></label>
+      <label><select name='time_id'>
          <?php foreach($lengths as $row) {
             echo "<option value='" .$row['id']. "'>" . ucwords(strtolower($row['name'])) . "</option>";
          } ?>
       </select></label></br>
-      
-      <label>Duration: <input type='number' name='duration'></input></label>
-      <label><input type='text' name='duration_type'></input></label></br>
       
       <label>Area: <input type='text' name='area'></input></label></br>
    </fieldset>
