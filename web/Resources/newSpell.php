@@ -4,20 +4,20 @@
    $insert = 'INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, save_id, area) 
    VALUES (:name, :school_id, :source_id, :casting_id, :duration_id, :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc, :save_id, :area)';
    try {
-      $schools = $db->query('SELECT id, name FROM project1.schools');
-      $schools -> fetch(PDO::FETCH_ASSOC);
-      //print_r($schools);
-      $sources = $db->query('SELECT id, name FROM project1.sources');
-      $sources -> fetch(PDO::FETCH_ASSOC);
-      //print_r($sources);
-      $classes = $db->query('SELECT id, name FROM project1.classes');
-      $classes -> fetch(PDO::FETCH_ASSOC);
-      //print_r($classes);
-      $lengths = $db->query('SELECT id, name FROM project1.lengths');
-      $lengths -> fetch(PDO::FETCH_ASSOC);
-      //print_r($lengths);
-      $saves = $db->query('SELECT id, name FROM project1.saves_attacks');
-      $saves -> fetch(PDO::FETCH_ASSOC);
+      $stm = $db->query('SELECT id, name FROM project1.schools');
+      $schools = $stm -> fetchAll(PDO::FETCH_ASSOC);
+      print_r($schools);
+      $stm = $db->query('SELECT id, name FROM project1.sources');
+      $sources = $stm -> fetchAll(PDO::FETCH_ASSOC);
+      print_r($sources);
+      $stm = $db->query('SELECT id, name FROM project1.classes');
+      $classes = $stm -> fetchAll(PDO::FETCH_ASSOC);
+      print_r($classes);
+      $stm = $db->query('SELECT id, name FROM project1.lengths');
+      $lengths = $stm -> fetchAll(PDO::FETCH_ASSOC);
+      print_r($lengths);
+      $stm = $db->query('SELECT id, name FROM project1.saves_attacks');
+      $saves = $stm -> fetchAll(PDO::FETCH_ASSOC);
       print_r($saves);
       
       if($_SERVER['REQUEST_METHOD'] == 'POST') {
