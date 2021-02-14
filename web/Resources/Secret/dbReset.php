@@ -1,13 +1,13 @@
 <?php
-   if($_SERVER['REQUEST_METHOD'] == 'POST') {
+   if($_SERVER['REQUEST_METHOD'] == 'GET') {
       try {
          require('../DBconnect.php');
          $db = get_db();
          
-         if($_POST['submit'] == 'delete') {
+         if($_GET['submit'] == 'delete') {
             $db->query("DROP TABLE IF EXISTS project1.spells_by_class, project1.spells, project1.saves_attacks, project1.lengths, project1.classes, project1.schools, project1.sources, project1.users");
          }
-         if($_POST['submit'] == 'create') {
+         if($_GET['submit'] == 'create') {
             $db->query("CREATE TABLE project1.users (
                   id SERIAL NOT NULL UNIQUE PRIMARY KEY,
                   username VARCHAR(100) NOT NULL UNIQUE,
@@ -54,7 +54,7 @@
                   class_id INT NOT NULL REFERENCES project1.classes(id),
                   spell_id INT NOT NULL REFERENCES project1.spells(id))");
          }
-         if($_POST['submit'] == 'insert') {
+         if($_GET['submit'] == 'insert') {
             $schools = $db->query("INSERT INTO project1.schools (name) VALUES ('conjuration'), ('necromancy'), ('evocation'), ('abjuration'), ('transmutation'), ('divination'), ('enchantment'), ('illusion')");
             
             $books = $db->prepare("INSERT INTO project1.sources (name) VALUES (?), (?), (?), (?), ('acquisitions incorporated'), (?), (?), ('lost laboratory of kwalish'), ('unearthed arcana'), ('custom')");
@@ -67,11 +67,11 @@
       } catch (PDOException $ex) {
          echo "Error connecting to DB. Details: $ex";
       }
-      unset($_POST);
+      unset($_GET);
       unset($_SERVER['REQUEST_METHOD']);
    }
 ?>
-<form method='POST'>
+<form method='GET'>
    <input type='submit' name='submit' value='delete'>
    <input type='submit' name='submit' value='create'>
    <input type='submit' name='submit' value='insert'>
