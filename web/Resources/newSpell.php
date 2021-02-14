@@ -26,15 +26,25 @@
          $com = implode(", ", $_POST['components']);
          echo $com . '</br>';
          $query = $db -> prepare($insert);
-         $query -> bindValue([':name' => $_POST['name'], ':school_id' => $_POST['school'],
-            ':source_id' => $_POST['source'], ':casting_id' => $_POST['cast_id'],
-            ':duration_id' => $_POST['time_id'], ':casting_time' => $_POST[':casting_time'], 
-            ':duration' => $_POST['duration'], ':lvl' => $_POST['level'], ':components' => $com,
-            ':con' => isset($_POST['con']), ':ritual' => isset($_POST['ritual']), 
-            ':range' => $_POST['range'], ':range_type' => $_POST['range_type'],
-            ':component_desc' => $_POST['com_desc'], ':consumed' => isset($_POST[':consumed']), 
-            ':description' => $_POST['description'], ':higher_desc' => $_POST[':higher_desc'],
-            ':save_id' => $_POST['save'], ':area' => $_POST['area']]);
+         $query -> bindValue(':name', $_POST['name'], PDO::PARAM_STR);
+         $query -> bindValue(':school_id', $_POST['school'], PDO::PARAM_INT);
+         $query -> bindValue(':source_id', $_POST['source'], PDO::PARAM_INT);
+         $query -> bindValue(':casting_id', $_POST['cast_id'], PDO::PARAM_INT);
+         $query -> bindValue(':duration_id', $_POST['time_id'], PDO::PARAM_INT);
+         $query -> bindValue(':save_id', $_POST['save'], PDO::PARAM_INT);
+         $query -> bindValue(':casting_time', $_POST['casting_time'], PDO::PARAM_INT);
+         $query -> bindValue(':duration', $_POST['duration'], PDO::PARAM_STR);
+         $query -> bindValue(':lvl', $_POST['level'], PDO::PARAM_INT);
+         $query -> bindValue(':components', $com, PDO::PARAM_STR);
+         $query -> bindValue(':con', isset($_POST['con']), PDO::PARAM_BOOL);
+         $query -> bindValue(':ritual', isset($_POST['ritual']), PDO::PARAM_BOOL);
+         $query -> bindValue(':consumed', isset($_POST['consumed']), PDO::PARAM_BOOL);
+         $query -> bindValue(':range', $_POST['range'], PDO::PARAM_INT);
+         $query -> bindValue(':range_type', $_POST['range_type'], PDO::PARAM_STR);
+         $query -> bindValue(':component_desc', $_POST['com_desc'], PDO::PARAM_STR);
+         $query -> bindValue(':description', $_POST['description'], PDO::PARAM_STR);
+         $query -> bindValue(':higher_desc', $_POST['higher_desc'], PDO::PARAM_STR);
+         $query -> bindValue(':area', $_POST['area'], PDO::PARAM_STR));
          print_r($query);
          $query->execute();
          unset($_POST);
