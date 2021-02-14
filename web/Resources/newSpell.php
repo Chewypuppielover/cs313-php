@@ -22,7 +22,7 @@
 ?>
 <head>
    <link rel="stylesheet" href="Prove06.css">
-   <script src="Resources/Prove06.js"> </script>
+   <script src="Prove06.js"> </script>
 </head>
 <form method='POST' >
    <fieldset>
@@ -37,7 +37,7 @@
       </select></label>
       <label>School: <select name='school'>
          <?php foreach($schools as $row) {
-            echo "<option value='" .$row['id']. "'>" . $row['name'].strtolower().ucwords() . "</option>";
+            echo "<option value='" .$row['id']. "'>" . ucwords(strtolower($row['name'])) . "</option>";
          } ?>
       </select></label></br>
    </fieldset>
@@ -72,13 +72,13 @@
    <fieldset> 
       <label>Book: <select name='source'>
          <?php foreach($sources as $row) {
-            echo "<option value='" .$row['id']. "'>" .$row['name'].strtolower().ucwords() . "</option>";
+            echo "<option value='" .$row['id']. "'>" . ucwords(strtolower($row['name'])) . "</option>";
          } ?>
       </select></label></br>
       
       Classes: </br>
       <?php foreach($classes as $row) {
-         echo "<label><input type='checkbox' name='classes[]' value='" .$row['id']. "'/>" .$row['name'].strtolower().ucwords() . "</label></br>";
+         echo "<label><input type='checkbox' name='classes[]' value='" .$row['id']. "'/>" . ucwords(strtolower($row['name'])) . "</label></br>";
       } ?>
    </fieldset>
       <input type='submit' value='Create Spell'/>
