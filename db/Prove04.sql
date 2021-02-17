@@ -46,10 +46,10 @@ CREATE TABLE project1.spells
    concentration BOOLEAN NOT NULL,
    ritual BOOLEAN NOT NULL,
    range INT,
-   range_type VARCHAR(30) NOT NULL, 
+   range_type VARCHAR(20) NOT NULL,
    area VARCHAR(100),
    components VARCHAR(7) NOT NULL, -- maybe three bools instead
-   component_desc VARCHAR(100), -- needs to be way longer
+   component_desc VARCHAR(20), -- needs to be way longer
    consumed BOOLEAN NOT NULL,
    description TEXT NOT NULL,
    higher_desc TEXT
