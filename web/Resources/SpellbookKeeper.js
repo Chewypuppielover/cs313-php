@@ -34,7 +34,11 @@ function initTable() {
             title: "Level",
             field: "lvl",
             sortable: true,
-            align: "center"
+            align: "center",
+            formatter: (value) => {
+               if(value == 0) return 'Cantrip';
+               else return value;
+            }
          }, {
             title: "Spell Name",
             field: "name",
@@ -42,13 +46,19 @@ function initTable() {
             align: "center"
          }, {
             title: "R/C",
-            field: ["ritual", "concentration"],
-            align: "center"
+            //field: ["ritual", "concentration"],
+            align: "center",
+            formatter: (row) => {
+               return (row.ritual)? 'Ritual ' : '' + (row.concentration)? 'Concentration' : '';
+            }
          }, {
             title: "Casting Time",
-            field: ["casting_time", "casting_time_type"],
+            //field: ["casting_time", "casting_time_type"],
             sortable: true,
-            align: "center"
+            align: "center",
+            formatter: (row) => {
+               return row.casting_time + ' ' + row.casting_time_type;
+            }
          }, {
             title: "Source",
             field: "source",
@@ -63,9 +73,12 @@ function initTable() {
             align: "center"
          }, {
             title: "Duration",
-            field: ["duration", "duration_type"],
+            //field: ["duration", "duration_type"],
             sortable: true,
-            align: "center"
+            align: "center",
+            formatter: (row) => {
+               return row.duration + " " + row.duration_type;
+            }
          }, {
             title: "Save/Attack",
             field: "save_attack",
@@ -74,10 +87,13 @@ function initTable() {
             align: "center"
          }, {
             title: "Range",
-            field: ["range", "range_type"],
+            //field: ["range", "range_type"],
             sortable: true,
             visible: false,
-            align: "center"
+            align: "center",
+            formatter: (row) => {
+               return row.range + " " + row.range_type;
+            }
          }, {
             title: "Area",
             field: "area",
@@ -86,10 +102,13 @@ function initTable() {
             align: "center"
          }, {
             title: "Components",
-            field: ["components", "component_desc", "consumed"],
+            //field: ["components", "component_desc", "consumed"],
             sortable: true,
             visible: false,
-            align: "center"
+            align: "center",
+            formatter: (row) => {
+               return row.components + "</br>" + (row.consumed)? 'Materials Consumed, ' : '' + row.component_desc;
+            }
          }, {
             title: "Description",
             field: "description",
