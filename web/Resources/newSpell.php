@@ -58,7 +58,7 @@
 ?>
 <head>
    <link rel="stylesheet" href="Prove06.css">
-   <script src="Prove06.js"> </script>
+   <!-- <script src="Prove06.js"> </script> -->
 </head>
 <form method='POST'>
    <fieldset>
