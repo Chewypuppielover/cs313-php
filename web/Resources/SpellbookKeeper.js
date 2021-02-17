@@ -42,11 +42,11 @@ function initTable() {
             align: "center"
          }, {
             title: "R/C",
-            // field: ["ritual", "concentration"],
+            field: ["ritual", "concentration"],
             align: "center"
          }, {
             title: "Casting Time",
-            field: "casting_time",
+            field: ["casting_time", "casting_time_type"],
             sortable: true,
             align: "center"
          }, {
@@ -63,7 +63,7 @@ function initTable() {
             align: "center"
          }, {
             title: "Duration",
-            //field: ["duration", "duration_type"],
+            field: ["duration", "duration_type"],
             sortable: true,
             align: "center"
          }, {
@@ -74,7 +74,7 @@ function initTable() {
             align: "center"
          }, {
             title: "Range",
-            //field: ["range", "range_type"],
+            field: ["range", "range_type"],
             sortable: true,
             visible: false,
             align: "center"
@@ -86,7 +86,7 @@ function initTable() {
             align: "center"
          }, {
             title: "Components",
-            //field: ["components", "component_desc", "consumed"],
+            field: ["components", "component_desc", "consumed"],
             sortable: true,
             visible: false,
             align: "center"
