@@ -48,7 +48,7 @@ function initTable() {
             title: "R/C",
             //field: ["ritual", "concentration"],
             align: "center",
-            formatter: (row) => {
+            formatter: (value, row) => {
                return (row.ritual)? 'Ritual ' : '' + (row.concentration)? 'Concentration' : '';
             }
          }, {
@@ -56,7 +56,7 @@ function initTable() {
             //field: ["casting_time", "casting_time_type"],
             sortable: true,
             align: "center",
-            formatter: (row) => {
+            formatter: (value, row) => {
                return row.casting_time + ' ' + row.casting_time_type;
             }
          }, {
@@ -76,7 +76,7 @@ function initTable() {
             //field: ["duration", "duration_type"],
             sortable: true,
             align: "center",
-            formatter: (row) => {
+            formatter: (value, row) => {
                return row.duration + " " + row.duration_type;
             }
          }, {
@@ -91,7 +91,7 @@ function initTable() {
             sortable: true,
             visible: false,
             align: "center",
-            formatter: (row) => {
+            formatter: (value, row) => {
                return row.range + " " + row.range_type;
             }
          }, {
@@ -106,7 +106,7 @@ function initTable() {
             sortable: true,
             visible: false,
             align: "center",
-            formatter: (row) => {
+            formatter: (value, row) => {
                return row.components + "</br>" + (row.consumed)? 'Materials Consumed, ' : '' + row.component_desc;
             }
          }, {
