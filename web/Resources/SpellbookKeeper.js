@@ -49,7 +49,7 @@ function initTable() {
             //field: ["ritual", "concentration"],
             align: "center",
             formatter: (value, row) => {
-               return (row.ritual)? 'Ritual ' : '' + (row.concentration)? 'Concentration' : '';
+               return ((row.ritual)? 'Ritual ' : '') + ((row.concentration)? 'Concentration' : '');
             }
          }, {
             title: "Casting Time",
@@ -77,7 +77,7 @@ function initTable() {
             sortable: true,
             align: "center",
             formatter: (value, row) => {
-               return row.duration + " " + row.duration_type;
+               return ((row.duration_type=='instantaneous')?(row.duration + " ") : "") + row.duration_type;
             }
          }, {
             title: "Save/Attack",
@@ -102,12 +102,12 @@ function initTable() {
             align: "center"
          }, {
             title: "Components",
-            //field: ["components", "component_desc", "consumed"],
+            field: "components", // "component_desc", "consumed"],
             sortable: true,
             visible: false,
             align: "center",
             formatter: (value, row) => {
-               return row.components + "</br>" + (row.consumed)? 'Materials Consumed, ' : '' + row.component_desc;
+               return value + "</br>" + ((row.consumed)? 'Materials Consumed, ' : '') + row.component_desc;
             }
          }, {
             title: "Description",
