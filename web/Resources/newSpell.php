@@ -66,8 +66,8 @@
       <label>Spell Name: <input type='text' name='name'></input></label></br>
       
       <label>Level: <select name='level'>
-         <option value='-1'>Cantrip</option>
-         <?php for($x = 0; $x < 10; $x++) {
+         <option value='0'>Cantrip</option>
+         <?php for($x = 0; $x <= 10; $x++) {
             echo "<option value='$x'>Level $x</option>";
          } ?>
       </select></label>

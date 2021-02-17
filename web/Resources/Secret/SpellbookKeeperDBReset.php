@@ -38,7 +38,7 @@
                   save_id INT REFERENCES project1.saves_attacks(id),
                   casting_time INT NOT NULL,
                   duration DECIMAL NOT NULL,
-                  lvl SMALLINT NOT NULL, -- only need numbers -1 thru 10
+                  lvl SMALLINT NOT NULL,
                   concentration BOOLEAN NOT NULL,
                   ritual BOOLEAN NOT NULL,
                   range INT,
