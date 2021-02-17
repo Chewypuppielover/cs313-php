@@ -67,7 +67,7 @@
       
       <label>Level: <select name='level'>
          <option value='0'>Cantrip</option>
-         <?php for($x = 0; $x <= 10; $x++) {
+         <?php for($x = 1; $x <= 10; $x++) {
             echo "<option value='$x'>Level $x</option>";
          } ?>
       </select></label>

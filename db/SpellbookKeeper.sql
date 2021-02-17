@@ -61,8 +61,8 @@ CREATE TABLE project1.spells_by_class
    spell_id INT NOT NULL REFERENCES project1.spells(id)
 );
 
-INSERT INTO project1.schools (name) VALUES ('CONJURATION'), ('NECROMANCY'), ('EVOCATION'), ('ABJURATION'), ('TRANSMUTATION'), ('DIVINATION'), ('ENCHANTMENT'), ('ILLUSION');
-INSERT INTO project1.sources (name) VALUES ('PLAYERS HANDBOOK'), ('ELEMENTAL EVIL PLAYERS COMPANION'), ('XANATHARS GUIDE TO EVERYTHING'), ('SWORD COAST ADVENTURERS GUIDE'), ('ACQUISITIONS INCORPORATED'), ('EXPLORERS GUIDE TO WILDEMOUNT'), ('GUILDMASTERS GUIDE TO RAVNICA'), ('LOST LABORATORY OF KWALISH'), ('UNEARTHED ARCANA'), ('CUSTOM');
-INSERT INTO project1.classes (name) VALUES ('ARTIFICER'), ('BARBARIAN'), ('BARD'), ('CLERIC'), ('DRUID'), ('FIGHTER'), ('MONK'), ('PALADIN'), ('RANGER'), ('ROUGE'), ('SOURCERER'), ('WARLOCK'), ('WIZARD'), ('BLOOD HUNTER');
-INSERT INTO project1.lengths (name) VALUES ('ACTION'), ('BONUS ACTION'), ('REACTION'), ('ROUNDS'), ('YEARS'), ('DAYS'), ('HOURS'), ('MINUTES'), ('SECONDS');
-INSERT INTO project1.saves_attacks (name) VALUES ('DEX Save'), ('STR Save'), ('CON Save'), ('INT Save'), ('WIS Save'), ('CHAR Save'), ('MELEE'), ('RANGED');
+INSERT INTO project1.schools (name) VALUES ('conjuration'), ('necromancy'), ('evocation'), ('abjuration'), ('transmutation'), ('divination'), ('enchantment'), ('illusion');
+INSERT INTO project1.sources (name) VALUES ('player\'s handbook'), ('elemental evil player\'s companion'), ('xanathar\'s guide to everything'), ('sword coast adventurer\'s guide'), ('acquisitions incorporated'), ('explorer\'s guide to wildemount'), ('guildmaster\'s guide to ravnica'), ('lost laboratory of kwalish'), ('unearthed arcana'), ('custom');
+INSERT INTO project1.classes (name) VALUES ('artificer'), ('barbarian'), ('bard'), ('cleric'), ('druid'), ('fighter'), ('monk'), ('paladin'), ('ranger'), ('rouge'), ('sourcerer'), ('warlock'), ('wizard'), ('blood hunter');
+INSERT INTO project1.lengths (name) VALUES ('action'), ('bonus action'), ('reaction'), ('rounds'), ('years'), ('days'), ('hours'), ('minutes'), ('seconds'), ('instantaneous');
+INSERT INTO project1.saves_attacks (name) VALUES ('dex save'), ('str save'), ('con save'), ('int save'), ('wis save'), ('char save'), ('melee'), ('ranged');

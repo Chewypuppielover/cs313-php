@@ -5,6 +5,7 @@ function a(link) {
    $(link).removeClass('collapse');
 }
 
+// onselect name=time_id value=instantaneous -> nam=duration set value=0;
 
 
 
