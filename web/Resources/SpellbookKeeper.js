@@ -77,7 +77,7 @@ function initTable() {
             sortable: true,
             align: "center",
             formatter: (value, row) => {
-               return ((row.duration_type=='instantaneous')?(row.duration + " ") : "") + row.duration_type;
+               return ((row.duration_type=='instantaneous')?'':(row.duration + " ")) + row.duration_type;
             }
          }, {
             title: "Save/Attack",
