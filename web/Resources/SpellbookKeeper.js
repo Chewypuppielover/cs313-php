@@ -55,7 +55,7 @@ function initTable() {
             //field: ["ritual", "concentration"],
             align: "center",
             formatter: (value, row) => {
-               return ((row.ritual)? 'Ritual ' : '') + ((row.concentration)? 'Concentration' : '');
+               return ((row.ritual)? 'Ritual ' : '') + ((row.concentration)? 'Concentration' : '')
             }
          }, {
             title: "Casting Time",
@@ -63,7 +63,7 @@ function initTable() {
             sortable: true,
             align: "center",
             formatter: (value, row) => {
-               return row.casting_time + ' ' + ucwords(row.casting_time_type;)
+               return row.casting_time + ' ' + ucwords(row.casting_time_type)
             }
          }, {
             title: "Source",
@@ -85,7 +85,7 @@ function initTable() {
             sortable: true,
             align: "center",
             formatter: (value, row) => {
-               return ((row.duration=='0')?'':(row.duration + " ")) + ucwords(row.duration_type);
+               return ((row.duration=='0')?'':(row.duration + " ")) + ucwords(row.duration_type)
             }
          }, {
             title: "Save/Attack",
@@ -101,7 +101,7 @@ function initTable() {
             visible: false,
             align: "center",
             formatter: (value, row) => {
-               return row.range + " " + row.range_type;
+               return row.range + " " + row.range_type
             }
          }, {
             title: "Area",
@@ -116,7 +116,7 @@ function initTable() {
             visible: false,
             align: "center",
             formatter: (value, row) => {
-               return value + "</br>" + ((row.consumed)? 'Materials Consumed, ' : '') + row.component_desc;
+               return value + "</br>" + ((row.consumed)? 'Materials Consumed, ' : '') + row.component_desc
             }
          }, {
             title: "Description",

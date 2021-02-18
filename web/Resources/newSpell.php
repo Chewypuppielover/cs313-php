@@ -57,7 +57,7 @@
    }
 ?>
 <head>
-   <link rel="stylesheet" href="Prove06.css">
+   <link rel="stylesheet" href="SpellbookKeeper.css">
    <!-- <script src="Prove06.js"> </script> -->
 </head>
 <form method='POST'>
