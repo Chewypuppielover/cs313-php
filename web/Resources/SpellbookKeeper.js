@@ -25,6 +25,12 @@ function detailFormatter(index, row) {
    })
    return html.join('')
 }
+function ucwords(str) {
+   const words = str.split(" ");
+   words.map((word) => { 
+       return word[0].toUpperCase() + word.substring(1); 
+   }).join(" ");
+}
 function initTable() {
    $table.bootstrapTable('destroy').bootstrapTable({
       height: 550,
@@ -57,34 +63,37 @@ function initTable() {
             sortable: true,
             align: "center",
             formatter: (value, row) => {
-               return row.casting_time + ' ' + row.casting_time_type;
+               return row.casting_time + ' ' + ucwords(row.casting_time_type;)
             }
          }, {
             title: "Source",
             field: "source",
             sortable: true,
             visible: false,
-            align: "center"
+            align: "center",
+            formatter: (value) => { return ucwords(value) }
          }, {
             title: "School",
             field: "school",
             sortable: true,
             visible: false,
-            align: "center"
+            align: "center",
+            formatter: (value) => { return ucwords(value) }
          }, {
             title: "Duration",
             //field: ["duration", "duration_type"],
             sortable: true,
             align: "center",
             formatter: (value, row) => {
-               return ((row.duration_type=='instantaneous')?'':(row.duration + " ")) + row.duration_type;
+               return ((row.duration=='0')?'':(row.duration + " ")) + ucwords(row.duration_type);
             }
          }, {
             title: "Save/Attack",
             field: "save_attack",
             sortable: true,
             visible: false,
-            align: "center"
+            align: "center",
+            formatter: (value) => { return ucwords(value) }
          }, {
             title: "Range",
             //field: ["range", "range_type"],
