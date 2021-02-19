@@ -16,14 +16,14 @@ function responseHandler(res) {
    $.each(res.rows, function (i, row) {
       console.log(row);
    })
-   return res
+   return res;
 }
 function detailFormatter(index, row) {
    var html = []
    $.each(row, function (key, value) {
       // html.push('<p><b>' + key + ':</b> ' + value + '</p>')
    })
-   return html.join('')
+   return html.join('');
 }
 function ucwords(str) {
    const words = str.split(" ");
