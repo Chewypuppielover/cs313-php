@@ -13,10 +13,12 @@ function a(link) {
 var $table = $('#table');
 
 function responseHandler(res) {
-   console.log(res);
    $.each(res, function (i, row) {
-      console.log(row);
       row.source = ucwords(row.source);
+      row.school = ucwords(row.school);
+      row.duration_type = ucwords(row.duration_type);
+      row.casting_time_type = ucwords(row.casting_time_type);
+      row.save_attack = ucwords(row.save_attack);
    });
    return res;
 }
@@ -43,8 +45,7 @@ function initTable() {
             sortable: true,
             align: "center",
             formatter: (value) => {
-               if(value == 0) return 'Cantrip';
-               else return value;
+               return (value == 0)? 'Cantrip': value;
             }
          }, {
             title: "Spell Name",
@@ -64,37 +65,34 @@ function initTable() {
             sortable: true,
             align: "center",
             formatter: (value, row) => {
-               return row.casting_time + ' ' + ucwords(row.casting_time_type)
+               return row.casting_time + ' ' + row.casting_time_type
             }
          }, {
             title: "Source",
             field: "source",
             sortable: true,
             visible: false,
-            align: "center",
-            //formatter: (value) => { return ucwords(value) }
+            align: "center"
          }, {
             title: "School",
             field: "school",
             sortable: true,
             visible: false,
-            align: "center",
-            formatter: (value) => { return ucwords(value) }
+            align: "center"
          }, {
             title: "Duration",
             //field: ["duration", "duration_type"],
             sortable: true,
             align: "center",
             formatter: (value, row) => {
-               return ((row.duration=='0')?'':(row.duration + " ")) + ucwords(row.duration_type)
+               return ((row.duration=='0')?'':(row.duration + " ")) + row.duration_type;
             }
          }, {
             title: "Save/Attack",
             field: "save_attack",
             sortable: true,
             visible: false,
-            align: "center",
-            formatter: (value) => { return ucwords(value) }
+            align: "center"
          }, {
             title: "Range",
             //field: ["range", "range_type"],
