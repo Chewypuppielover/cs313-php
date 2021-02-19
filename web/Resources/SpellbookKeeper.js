@@ -13,17 +13,16 @@ function a(link) {
 var $table = $('#table');
 
 function responseHandler(res) {
+   console.log(res);
    $.each(res.rows, function (i, row) {
       row.source = ucwords(row.source);
-      console.log(row.source);
+      console.log(row);
    });
    return res;
 }
 function detailFormatter(index, row) {
    var html = []
-   $.each(row, function(row) {
-      html.push('<p><b>' + row.description + ':</b> ' + row.higher_desc + '</p>');
-   });
+   html.push('<p><b>' + row.description + ':</b> ' + row.higher_desc + '</p>');
    return html.join('');
 }
 function ucwords(str) {
