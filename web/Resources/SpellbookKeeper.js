@@ -15,13 +15,14 @@ var $table = $('#table');
 function responseHandler(res) {
    $.each(res.rows, function (i, row) {
       console.log(row);
+      row.source = ucwords(row.source);
    })
    return res;
 }
 function detailFormatter(index, row) {
    var html = []
-   $.each(row, function (key, value) {
-      // html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+   $.each(row) {
+      html.push('<p><b>' + row.description + ':</b> ' + row.higher_desc + '</p>');
    })
    return html.join('');
 }
@@ -72,7 +73,7 @@ function initTable() {
             sortable: true,
             visible: false,
             align: "center",
-            formatter: (value) => { return ucwords(value) }
+            //formatter: (value) => { return ucwords(value) }
          }, {
             title: "School",
             field: "school",
