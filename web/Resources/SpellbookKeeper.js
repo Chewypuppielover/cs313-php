@@ -14,7 +14,7 @@ var $table = $('#table');
 
 function responseHandler(res) {
    console.log(res);
-   $.each(res.rows, function (i, row) {
+   $.each(res, function (i, row) {
       console.log(row);
       row.source = ucwords(row.source);
    });
