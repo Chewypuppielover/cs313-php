@@ -23,7 +23,7 @@ function detailFormatter(index, row) {
    var html = []
    $.each(row) {
       html.push('<p><b>' + row.description + ':</b> ' + row.higher_desc + '</p>');
-   })
+   }
    return html.join('');
 }
 function ucwords(str) {
