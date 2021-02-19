@@ -27,9 +27,10 @@ function detailFormatter(index, row) {
 }
 function ucwords(str) {
    const words = str.split(" ");
-   words.map((word) => { 
-       return word[0].toUpperCase() + word.substring(1); 
-   }).join(" ");
+   for (let i = 0; i < words.length; i++) {
+      words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+   }
+   return words.join(" ");
 }
 function initTable() {
    $table.bootstrapTable('destroy').bootstrapTable({
