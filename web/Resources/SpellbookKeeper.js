@@ -14,16 +14,15 @@ var $table = $('#table');
 
 function responseHandler(res) {
    $.each(res.rows, function (i, row) {
-      console.log(row);
       row.source = ucwords(row.source);
-   })
+   });
    return res;
 }
 function detailFormatter(index, row) {
    var html = []
-   $.each(row) {
+   $.each(row, function(row) {
       html.push('<p><b>' + row.description + ':</b> ' + row.higher_desc + '</p>');
-   })
+   });
    return html.join('');
 }
 function ucwords(str) {
