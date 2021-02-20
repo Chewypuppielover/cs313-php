@@ -66,10 +66,10 @@
          }
          if($_GET['submit'] == 'json') {
             $spells = json_decode(file_get_contents('sellData.txt'), true);
-            console.log($spells);
+            //console.log($spells);
             $insert = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, save_id, area) 
             VALUES (:name, :school_id, :source_id, :casting_id, :duration_id, :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc, :save_id, :area)');
-            $query -> bindValue(':name', $_POST['name'], PDO::PARAM_STR);
+            /* $query -> bindValue(':name', $_POST['name'], PDO::PARAM_STR);
             $query -> bindValue(':school_id', $_POST['school'], PDO::PARAM_INT);
             $query -> bindValue(':source_id', $_POST['source'], PDO::PARAM_INT);
             $query -> bindValue(':casting_id', $_POST['cast_id'], PDO::PARAM_INT);
@@ -88,7 +88,7 @@
             $query -> bindValue(':description', $_POST['description'], PDO::PARAM_STR);
             $query -> bindValue(':higher_desc', $_POST['higher_desc'], PDO::PARAM_STR);
             $query -> bindValue(':area', $_POST['area'], PDO::PARAM_STR);
-            $query->execute();
+            $query->execute(); */
          }
       } catch (PDOException $ex) {
          echo "Error connecting to DB. Details: $ex";
