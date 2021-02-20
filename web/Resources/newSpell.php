@@ -45,7 +45,6 @@
          $query -> bindValue(':description', $_POST['description'], PDO::PARAM_STR);
          $query -> bindValue(':higher_desc', $_POST['higher_desc'], PDO::PARAM_STR);
          $query -> bindValue(':area', $_POST['area'], PDO::PARAM_STR);
-         //print_r($query);
          $query->execute();
          unset($_POST);
       }
