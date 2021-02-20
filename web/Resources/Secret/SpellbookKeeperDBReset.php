@@ -66,7 +66,7 @@
          }
          if($_GET['submit'] == 'json') {
             $spells = json_decode(file_get_contents('sellData.txt'), true);
-            echo $spells;
+            echo "Spells: " . $spells;
             $insert = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, save_id, area) 
             VALUES (:name, :school_id, :source_id, :casting_id, :duration_id, :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc, :save_id, :area)');
             /* $query -> bindValue(':name', $_POST['name'], PDO::PARAM_STR);
