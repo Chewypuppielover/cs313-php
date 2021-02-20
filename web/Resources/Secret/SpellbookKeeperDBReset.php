@@ -64,15 +64,46 @@
             $lengths = $db->query("INSERT INTO project1.lengths (name) VALUES ('action'), ('bonus action'), ('reaction'), ('rounds'), ('years'), ('days'), ('hours'), ('minutes'), ('seconds'), ('instantaneous')");
             $saves = $db->query("INSERT INTO project1.saves_attacks (name) VALUES ('dex save'), ('str save'), ('con save'), ('int save'), ('wis save'), ('char save'), ('melee'), ('ranged')");
          }
+         if($_GET['submit'] == 'json') {
+            $spells = json_decode(file_get_contents('sellData.txt'), true);
+            console.log($spells);
+            $insert = $db->perpare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, save_id, area) 
+            VALUES (:name, :school_id, :source_id, :casting_id, :duration_id, :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc, :save_id, :area)');
+            $query -> bindValue(':name', $_POST['name'], PDO::PARAM_STR);
+            $query -> bindValue(':school_id', $_POST['school'], PDO::PARAM_INT);
+            $query -> bindValue(':source_id', $_POST['source'], PDO::PARAM_INT);
+            $query -> bindValue(':casting_id', $_POST['cast_id'], PDO::PARAM_INT);
+            $query -> bindValue(':duration_id', $_POST['time_id'], PDO::PARAM_INT);
+            $query -> bindValue(':save_id', $_POST['save'], PDO::PARAM_INT);
+            $query -> bindValue(':casting_time', $_POST['casting_time'], PDO::PARAM_INT);
+            $query -> bindValue(':duration', $_POST['duration'], PDO::PARAM_STR);
+            $query -> bindValue(':lvl', $_POST['level'], PDO::PARAM_INT);
+            $query -> bindValue(':components', $com, PDO::PARAM_STR);
+            $query -> bindValue(':con', isset($_POST['con']), PDO::PARAM_BOOL);
+            $query -> bindValue(':ritual', isset($_POST['ritual']), PDO::PARAM_BOOL);
+            $query -> bindValue(':consumed', isset($_POST['consumed']), PDO::PARAM_BOOL);
+            $query -> bindValue(':range', $_POST['range'], PDO::PARAM_INT);
+            $query -> bindValue(':range_type', $_POST['range_type'], PDO::PARAM_STR);
+            $query -> bindValue(':component_desc', $_POST['com_desc'], PDO::PARAM_STR);
+            $query -> bindValue(':description', $_POST['description'], PDO::PARAM_STR);
+            $query -> bindValue(':higher_desc', $_POST['higher_desc'], PDO::PARAM_STR);
+            $query -> bindValue(':area', $_POST['area'], PDO::PARAM_STR);
+            $query->execute();
+         }
       } catch (PDOException $ex) {
          echo "Error connecting to DB. Details: $ex";
       }
       unset($_GET);
       unset($_SERVER['REQUEST_METHOD']);
    }
+   
+   
+   
+   
 ?>
 <form method='GET'>
    <input type='submit' name='submit' value='delete'>
    <input type='submit' name='submit' value='create'>
    <input type='submit' name='submit' value='insert'>
+   <input type='submit' name='submit' value='json'>
 </form>
