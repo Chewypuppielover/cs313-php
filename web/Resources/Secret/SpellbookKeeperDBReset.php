@@ -66,7 +66,7 @@
          }
          if($_GET['submit'] == 'json') {
             $json = file_get_contents('./spellData.json');
-            //print_r($json);
+            print_r($json);
             $spells = json_decode($json, true);
             echo "Spells: ";
             print_r($spells);
