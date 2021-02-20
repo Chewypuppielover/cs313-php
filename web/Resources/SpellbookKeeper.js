@@ -8,8 +8,6 @@ function a(link) {
 // onselect name=time_id value=instantaneous -> nam=duration set value=0;
 
 
-
-
 var $table = $('#table');
 
 function responseHandler(res) {
@@ -19,12 +17,29 @@ function responseHandler(res) {
       row.duration_type = ucwords(row.duration_type);
       row.casting_time_type = ucwords(row.casting_time_type);
       row.save_attack = ucwords(row.save_attack);
+      row.lvl = (row.lvl == 0)? 'Cantrip': value;
    });
    return res;
 }
+function level(value) {
+   if (value == 0) return "Cantrip ";
+   if (value == 1) return value + "st-level ";
+   if (value == 2) return value + "nd-level ";
+   if (value == 3) return value + "rd-level ";
+   return value + "th-level ";
+}
 function detailFormatter(index, row) {
    var html = []
-   html.push('<p><b>' + row.description + ':</b> ' + row.higher_desc + '</p>');
+   html.push(
+      '<b>' + row.name + '</b>' + 
+      '</br>\t' + level(row.lvl) + row.school + if(row.ritual)? "(ritual)" + if(row.concentration)? "(concentration)" +
+      '</br>\tCasting time: ' + row.casting_time + ' ' + row.casting_time_type +
+      '</br>\tRange: ' + row.range + ' ' + row.range_type +
+      '</br>\tComponents: ' + row.components + if(row.component_desc)?(' (' + row.component_desc + ')' + if(row.consumed)? "(consumed)") +
+      '</br>\tDuration: ' + row.duration + ' ' + row.duration_type +
+      '<p>' + row.description + '</br>' + row.higher_desc + '</p>'
+   );
+   
    return html.join('');
 }
 function ucwords(str) {
@@ -43,10 +58,7 @@ function initTable() {
             title: "Level",
             field: "lvl",
             sortable: true,
-            align: "center",
-            formatter: (value) => {
-               return (value == 0)? 'Cantrip': value;
-            }
+            align: "center"
          }, {
             title: "Spell Name",
             field: "name",
