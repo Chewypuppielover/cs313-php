@@ -65,7 +65,7 @@
             $saves = $db->query("INSERT INTO project1.saves_attacks (name) VALUES ('dex save'), ('str save'), ('con save'), ('int save'), ('wis save'), ('char save'), ('melee'), ('ranged')");
          }
          if($_GET['submit'] == 'json') {
-            $spells = json_decode(file_get_contents('sellData.txt'), true);
+            $spells = json_decode(file_get_contents('spellData.txt'), true);
             echo "Spells: ";
             print_r($spells);
             $insert = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, save_id, area) 
