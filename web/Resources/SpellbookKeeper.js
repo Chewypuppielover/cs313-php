@@ -35,7 +35,7 @@ function detailFormatter(index, row) {
       '</br>\t' + level(row.lvl) + row.school + (row.ritual)? "(ritual)" + (row.concentration)? "(concentration)" +
       '</br>\tCasting time: ' + row.casting_time + ' ' + row.casting_time_type +
       '</br>\tRange: ' + row.range + ' ' + row.range_type +
-      '</br>\tComponents: ' + row.components + (row.component_desc)?(' (' + row.component_desc + ')' + (row.consumed)? "(consumed)") +
+      '</br>\tComponents: ' + row.components + ((row.component_desc)? ' (' + row.component_desc + ')' + (row.consumed)? "(consumed)") +
       '</br>\tDuration: ' + row.duration + ' ' + row.duration_type +
       '<p>' + row.description + '</br>' + row.higher_desc + '</p>'
    );
