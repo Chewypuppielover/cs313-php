@@ -37,3 +37,9 @@ iframe {
    height: 100%;
    border: none;
 }
+.i-rit {
+   background-image: url(https://www.dndbeyond.com/content/1-0-1436-0/skins/waterdeep/images/icons/core_mechanics/ritual.svg);
+}
+.i-cons {
+   background-image: url(https://www.dndbeyond.com/content/1-0-1436-0/skins/waterdeep/images/icons/core_mechanics/concentration.svg);
+}

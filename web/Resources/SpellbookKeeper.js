@@ -32,13 +32,13 @@ function level(value) {
 function detailFormatter(index, row) {
    var html = '<b>' + row.name + '</b>' + '</br>' + level(row.lvl) + row.school;
    html += (row.ritual)? " (ritual)":'';
-   html += (row.concentration)? " (concentration)":'';
+   html += (row.concentration)? " <i class='i-cons'></i>":'';
    html += '</br><b>Casting time:</b> ' + row.casting_time + ' ' + row.casting_time_type;
    html += '</br><b>Range:</b> ' + row.range + ' ' + row.range_type
    html += '</br><b>Components:</b> ' + row.components;
    html += row.component_desc && (' (' + row.component_desc + ')' + row.consumed && "(consumed)");
    html += '</br><b>Duration:</b> ' + row.duration + ' ' + row.duration_type;
-   html += '<p>' + row.description + '</br>' + row.higher_desc + '</p>';
+   html += '<p>' + row.description + '</br><b>At Higher Levels:</b> ' + row.higher_desc + '</p>';
    return html;
 }
 function ucwords(str) {
