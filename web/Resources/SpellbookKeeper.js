@@ -23,7 +23,7 @@ function responseHandler(res) {
    return res;
 }
 function level(value) {
-   if (value == 'Cantrip') return "Cantrip ";
+   if (value == 'Cantrip') return "Cantrip-level ";
    if (value == '1') return value + "st-level ";
    if (value == '2') return value + "nd-level ";
    if (value == '3') return value + "rd-level ";
