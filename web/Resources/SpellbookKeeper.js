@@ -29,18 +29,16 @@ function level(value) {
    return value + "th-level ";
 }
 function detailFormatter(index, row) {
-   var html = []
-   html.push(
-      '<b>' + row.name + '</b>' + 
-      '</br>\t' + level(row.lvl) + row.school + (row.ritual)? "(ritual)" + (row.concentration)? "(concentration)" +
-      '</br>\tCasting time: ' + row.casting_time + ' ' + row.casting_time_type +
-      '</br>\tRange: ' + row.range + ' ' + row.range_type +
-      '</br>\tComponents: ' + row.components + (row.component_desc)? ' (' + row.component_desc + ')':'' + (row.consumed)? "(consumed)":'' +
-      '</br>\tDuration: ' + row.duration + ' ' + row.duration_type +
-      '<p>' + row.description + '</br>' + row.higher_desc + '</p>'
-   );
-   
-   return html.join('');
+   var html = '<b>' + row.name + '</b>' + '</br>\t' + level(row.lvl) + row.school;
+   html += (row.ritual)? "(ritual)";
+   html += (row.concentration)? "(concentration)";
+   html += '</br>\tCasting time: ' + row.casting_time + ' ' + row.casting_time_type;
+   html += '</br>\tRange: ' + row.range + ' ' + row.range_type
+   html += '</br>\tComponents: ' + row.components;
+   html += (row.component_desc)? (' (' + row.component_desc + ')' + (row.consumed)? "(consumed)":''):'';
+   html += '</br>\tDuration: ' + row.duration + ' ' + row.duration_type;
+   html += '<p>' + row.description + '</br>' + row.higher_desc + '</p>';
+   return html;
 }
 function ucwords(str) {
    const words = str.split(" ");
