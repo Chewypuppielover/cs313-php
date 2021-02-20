@@ -65,8 +65,8 @@
             $saves = $db->query("INSERT INTO project1.saves_attacks (name) VALUES ('dex save'), ('str save'), ('con save'), ('int save'), ('wis save'), ('char save'), ('melee'), ('ranged')");
          }
          if($_GET['submit'] == 'json') {
-            $json = file_get_contents('./spellData.txt');
-            print_r($json);
+            $json = file_get_contents('./spellData.json');
+            //print_r($json);
             $spells = json_decode($json, true);
             echo "Spells: ";
             print_r($spells);
