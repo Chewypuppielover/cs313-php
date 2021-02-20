@@ -30,12 +30,12 @@ function level(value) {
 }
 function detailFormatter(index, row) {
    var html = '<b>' + row.name + '</b>' + '</br>\t' + level(row.lvl) + row.school;
-   html += (row.ritual)? "(ritual)";
-   html += (row.concentration)? "(concentration)";
+   html += row.ritual && "(ritual)";
+   html += row.concentration && "(concentration)";
    html += '</br>\tCasting time: ' + row.casting_time + ' ' + row.casting_time_type;
    html += '</br>\tRange: ' + row.range + ' ' + row.range_type
    html += '</br>\tComponents: ' + row.components;
-   html += (row.component_desc)? (' (' + row.component_desc + ')' + (row.consumed)? "(consumed)":''):'';
+   html += row.component_desc && (' (' + row.component_desc + ')' + row.consumed && "(consumed)");
    html += '</br>\tDuration: ' + row.duration + ' ' + row.duration_type;
    html += '<p>' + row.description + '</br>' + row.higher_desc + '</p>';
    return html;
