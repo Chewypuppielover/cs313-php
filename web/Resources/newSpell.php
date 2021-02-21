@@ -62,7 +62,7 @@
 <form method='POST'>
    <fieldset>
       <h2>Create New Spell</h2>
-      <label>Spell Name: <input type='text' name='name'></input></label></br>
+      <label>Spell Name: <input type='text' name='name' required></input></label></br>
       
       <label>Level: <select name='level'>
          <option value='0'>Cantrip</option>
@@ -83,7 +83,7 @@
       </select></label>
    </fieldset>
    <fieldset> 
-      <label>Casting Time: <input type='number' name='casting_time'></input></label>
+      <label>Casting Time: <input type='number' name='casting_time' required></input></label>
       <label>Action: <select name='cast_id'>
          <?php foreach($lengths as $row) {
             echo "<option value='" .$row['id']. "'>" .ucwords($row['name']). "</option>";
@@ -93,7 +93,7 @@
       <label>Range: <input type='number' name='range'></input></label>
       <label><input type='text' name='range_type'></input></label></br>
       
-      <label>Duration: <input type='number' name='duration'></input></label>
+      <label>Duration: <input type='number' name='duration' required></input></label>
       <label><select name='time_id'>
          <?php foreach($lengths as $row) {
             echo "<option value='" .$row['id']. "'>" .ucwords($row['name']). "</option>";
@@ -114,7 +114,7 @@
    </fieldset>
    <fieldset> 
       <label>Spell Description: </br>
-      <textarea name='description'></textarea></label></br>
+      <textarea name='description' required></textarea></label></br>
       <label>Spell Description at Higher Levels: </br>
       <textarea name='higher_desc'></textarea></label></br>
    </fieldset>
