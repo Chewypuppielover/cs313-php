@@ -70,7 +70,7 @@
             $spells = json_decode($json, true);
             //echo "</br>Spells: ";
             //print_r($spells);
-            $casting_id = join(' ', array_slice(split(' ', strtolower($spells['casting_time'])), 1);
+            $casting_id = join(' ', array_slice(split(' ', strtolower($spells['casting_time'])), 1));
             $duration_id = split(' ', strtolower($spells['duration']))[-1];
             $lvl = (ctype_digit($spells['level'][0]))? $spells['level'][0]:0;
             $consumed = str_contains($spells['material'], 'gp');
