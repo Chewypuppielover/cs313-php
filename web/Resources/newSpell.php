@@ -22,7 +22,7 @@
       
       if($_SERVER['REQUEST_METHOD'] == 'POST') {
          //echo "POST caught";
-         //print_r($_POST);
+         print_r($_POST);
          $com = implode(", ", $_POST['components']);
          //echo $com . '</br>';
          $query = $db -> prepare($insert);
