@@ -74,7 +74,7 @@
                $casting_id = implode(' ', array_slice(explode(' ', strtolower($spell['casting_time'])), 1));
                $duration_id = end(explode(' ', strtolower($spell['duration'])));
                $lvl = (ctype_digit($spell['level'][0]))? $spell['level'][0]:0;
-               $consumed = str_contains($spell['material'], 'gp');
+               $consumed = preg_match('/(gp)/', $spell['material']);
                $rn = explode(' ', $spell['range'])[0];
                $range_num = (ctype_digit($rn) ? $rn : 0);
                
