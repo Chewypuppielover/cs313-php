@@ -83,7 +83,7 @@
                $rn = explode(' ', $spell['range'])[0];
                $range_num = (ctype_digit($rn) ? $rn : 0);
                
-               $insert = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, area) 
+               $query = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, area) 
                VALUES (:name, (SELECT id FROM project1.schools WHERE name=:school_id),
                (SELECT id FROM project1.sources WHERE name=:source_id),
                (SELECT id FROM project1.lengths WHERE name=:casting_id),
