@@ -74,7 +74,7 @@
             $duration_id = split(' ', strtolower($spells['duration']))[-1];
             $lvl = (ctype_digit($spells['level'][0]))? $spells['level'][0]:0;
             $consumed = str_contains($spells['material'], 'gp');
-            $rn = split(' ', $spells['range'])[0]
+            $rn = split(' ', $spells['range'])[0];
             $range_num = (ctype_digit($rn) ? $rn : 0);
             
             $insert = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, area) 
