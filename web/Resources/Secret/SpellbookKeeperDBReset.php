@@ -84,7 +84,7 @@
             (SELECT id FROM project1.lengths WHERE name=:duration_id),
             :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc)');
             $query -> bindValue(':name', $spells['name'], PDO::PARAM_STR);
-            $query -> bindValue(':school_id', strtolower($spells['school'],) PDO::PARAM_STR);
+            $query -> bindValue(':school_id', strtolower($spells['school']), PDO::PARAM_STR);
             $query -> bindValue(':source_id', strtolower($spells['source']), PDO::PARAM_STR);
             $query -> bindValue(':casting_id', $casting_id, PDO::PARAM_STR);
             $query -> bindValue(':duration_id', $duration, PDO::PARAM_STR);
