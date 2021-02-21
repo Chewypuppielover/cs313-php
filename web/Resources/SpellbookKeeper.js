@@ -16,7 +16,7 @@ function responseHandler(res) {
       row.school = ucwords(row.school);
       row.casting_time_type = ucwords(row.casting_time_type);
       row.duration = ucwords(row.duration_type);
-      row.save_attack = ucwords(row.save_attack);
+      //row.save_attack = ucwords(row.save_attack);
       row.lvl = (row.lvl == 0)? 'Cantrip': value;
    });
    return res;
