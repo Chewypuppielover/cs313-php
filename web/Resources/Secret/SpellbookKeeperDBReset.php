@@ -70,37 +70,39 @@
             $spells = json_decode($json, true);
             //echo "</br>Spells: ";
             //print_r($spells);
-            $casting_id = implode(' ', array_slice(explode(' ', strtolower($spells['casting_time'])), 1));
-            $duration_id = explode(' ', strtolower($spells['duration']))[-1];
-            $lvl = (ctype_digit($spells['level'][0]))? $spells['level'][0]:0;
-            $consumed = str_contains($spells['material'], 'gp');
-            $rn = explode(' ', $spells['range'])[0];
-            $range_num = (ctype_digit($rn) ? $rn : 0);
-            
-            $insert = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, area) 
-            VALUES (:name, (SELECT id FROM project1.schools WHERE name=:school_id),
-            (SELECT id FROM project1.sources WHERE name=:source_id),
-            (SELECT id FROM project1.lengths WHERE name=:casting_id),
-            (SELECT id FROM project1.lengths WHERE name=:duration_id),
-            :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc)');
-            $query -> bindValue(':name', $spells['name'], PDO::PARAM_STR);
-            $query -> bindValue(':school_id', strtolower($spells['school']), PDO::PARAM_STR);
-            $query -> bindValue(':source_id', strtolower($spells['source']), PDO::PARAM_STR);
-            $query -> bindValue(':casting_id', $casting_id, PDO::PARAM_STR);
-            $query -> bindValue(':duration_id', $duration, PDO::PARAM_STR);
-            $query -> bindValue(':casting_time', explode(' ', $spells['casting_time'])[0], PDO::PARAM_INT);
-            $query -> bindValue(':duration', explode(' ', $spells['duration'])[0], PDO::PARAM_STR);
-            $query -> bindValue(':lvl', $lvl, PDO::PARAM_INT);
-            $query -> bindValue(':components', $spells['components'], PDO::PARAM_STR);
-            $query -> bindValue(':con', ($spells['concentration'] == 'yes' ? true : false), PDO::PARAM_BOOL);
-            $query -> bindValue(':ritual', ($spells['ritual'] == 'yes' ? true : false), PDO::PARAM_BOOL);
-            $query -> bindValue(':consumed', $consumed, PDO::PARAM_BOOL);
-            $query -> bindValue(':range', $range_num, PDO::PARAM_INT);
-            $query -> bindValue(':range_type', explode(' ', $spells['range'])[-1], PDO::PARAM_STR);
-            $query -> bindValue(':component_desc', $spells['material'], PDO::PARAM_STR);
-            $query -> bindValue(':description', $spells['desc'], PDO::PARAM_STR);
-            $query -> bindValue(':higher_desc', $spells['higher_level'], PDO::PARAM_STR);
-            $query->execute();
+            foreach($spells as $spell) {
+               $casting_id = implode(' ', array_slice(explode(' ', strtolower($spell['casting_time'])), 1));
+               $duration_id = end(explode(' ', strtolower($spell['duration'])));
+               $lvl = (ctype_digit($spell['level'][0]))? $spell['level'][0]:0;
+               $consumed = str_contains($spell['material'], 'gp');
+               $rn = explode(' ', $spell['range'])[0];
+               $range_num = (ctype_digit($rn) ? $rn : 0);
+               
+               $insert = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, area) 
+               VALUES (:name, (SELECT id FROM project1.schools WHERE name=:school_id),
+               (SELECT id FROM project1.sources WHERE name=:source_id),
+               (SELECT id FROM project1.lengths WHERE name=:casting_id),
+               (SELECT id FROM project1.lengths WHERE name=:duration_id),
+               :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc)');
+               $query -> bindValue(':name', $spell['name'], PDO::PARAM_STR);
+               $query -> bindValue(':school_id', strtolower($spell['school']), PDO::PARAM_STR);
+               $query -> bindValue(':source_id', strtolower($spell['source']), PDO::PARAM_STR);
+               $query -> bindValue(':casting_id', $casting_id, PDO::PARAM_STR);
+               $query -> bindValue(':duration_id', $duration, PDO::PARAM_STR);
+               $query -> bindValue(':casting_time', explode(' ', $spell['casting_time'])[0], PDO::PARAM_INT);
+               $query -> bindValue(':duration', explode(' ', $spell['duration'])[0], PDO::PARAM_STR);
+               $query -> bindValue(':lvl', $lvl, PDO::PARAM_INT);
+               $query -> bindValue(':components', $spell['components'], PDO::PARAM_STR);
+               $query -> bindValue(':con', ($spell['concentration'] == 'yes' ? true : false), PDO::PARAM_BOOL);
+               $query -> bindValue(':ritual', ($spell['ritual'] == 'yes' ? true : false), PDO::PARAM_BOOL);
+               $query -> bindValue(':consumed', $consumed, PDO::PARAM_BOOL);
+               $query -> bindValue(':range', $range_num, PDO::PARAM_INT);
+               $query -> bindValue(':range_type', end(explode(' ', $spell['range'])), PDO::PARAM_STR);
+               $query -> bindValue(':component_desc', $spell['material'], PDO::PARAM_STR);
+               $query -> bindValue(':description', $spell['desc'], PDO::PARAM_STR);
+               $query -> bindValue(':higher_desc', $spell['higher_level'], PDO::PARAM_STR);
+               $query->execute();
+            }
          }
       } catch (PDOException $ex) {
          echo "Error connecting to DB. Details: $ex";
