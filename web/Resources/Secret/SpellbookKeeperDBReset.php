@@ -72,9 +72,12 @@
             //print_r($spells);
             foreach($spells as $spell) {
                print_r($spell);
+               echo '</br>';
+               $s = explode(' ', $spell['page'])[0];
+               $source = ($s == 'ee' ? "elemental evil player's companion" : ($s == 'phb' ? "player's handbook" : "sword coast adventurer's guide"));
                $casting_id = implode(' ', array_slice(explode(' ', strtolower($spell['casting_time'])), 1));
                $duration_id = end(explode(' ', strtolower($spell['duration'])));
-               $lvl = (ctype_digit($spell['level'][0]))? $spell['level'][0]:0;
+               $lvl = (ctype_digit($spell['level'][0])? $spell['level'][0]:0);
                $consumed = preg_match('/(gp)/', $spell['material']);
                $rn = explode(' ', $spell['range'])[0];
                $range_num = (ctype_digit($rn) ? $rn : 0);
@@ -85,9 +88,9 @@
                (SELECT id FROM project1.lengths WHERE name=:casting_id),
                (SELECT id FROM project1.lengths WHERE name=:duration_id),
                :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc)');
-               /* $query -> bindValue(':name', $spell['name'], PDO::PARAM_STR);
+               $query -> bindValue(':name', $spell['name'], PDO::PARAM_STR);
                $query -> bindValue(':school_id', strtolower($spell['school']), PDO::PARAM_STR);
-               $query -> bindValue(':source_id', strtolower($spell['source']), PDO::PARAM_STR);
+               $query -> bindValue(':source_id', $source, PDO::PARAM_STR);
                $query -> bindValue(':casting_id', $casting_id, PDO::PARAM_STR);
                $query -> bindValue(':duration_id', $duration, PDO::PARAM_STR);
                $query -> bindValue(':casting_time', explode(' ', $spell['casting_time'])[0], PDO::PARAM_INT);
@@ -99,10 +102,10 @@
                $query -> bindValue(':consumed', $consumed, PDO::PARAM_BOOL);
                $query -> bindValue(':range', $range_num, PDO::PARAM_INT);
                $query -> bindValue(':range_type', end(explode(' ', $spell['range'])), PDO::PARAM_STR);
-               $query -> bindValue(':component_desc', $spell['material'], PDO::PARAM_STR);
+               $query -> bindValue(':component_desc', ($spell['material']?:''), PDO::PARAM_STR);
                $query -> bindValue(':description', $spell['desc'], PDO::PARAM_STR);
                $query -> bindValue(':higher_desc', $spell['higher_level'], PDO::PARAM_STR);
-               $query->execute(); */
+               $query->execute();
             }
          }
       } catch (PDOException $ex) {
