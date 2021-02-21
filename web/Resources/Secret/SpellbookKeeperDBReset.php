@@ -75,7 +75,7 @@
                $source_id = ($s == 'ee' ? "elemental evil player's companion" : ($s == 'phb' ? "player's handbook" : "sword coast adventurer's guide"));
                $c = explode(' ', strtolower($spell['casting_time']));
                $casting_id = implode(' ', array_slice($c, 1));
-               if(end($c) != 'action' && $c[strlen($c)-1] != 's') $casting_id += 's';
+               if(end($c) != 'action' && $c[strlen($c[0])-1] != 's') $casting_id += 's';
                $lvl = (ctype_digit($spell['level'][0])? $spell['level'][0]:0);
                $consumed = preg_match('/(gp)/', $spell['material']);
                $r = explode(' ', $spell['range']);
@@ -106,7 +106,7 @@
                $query -> bindValue(':range_type', end($r), PDO::PARAM_STR);
                $query -> bindValue(':component_desc', ($spell['material']?:''), PDO::PARAM_STR);
                $query -> bindValue(':description', $spell['desc'], PDO::PARAM_STR);
-               $query -> bindValue(':higher_desc', $spell['higher_level'], PDO::PARAM_STR);
+               $query -> bindValue(':higher_desc', ($spell['higher_level']?:''), PDO::PARAM_STR);
                $query->execute();
             }
          }
