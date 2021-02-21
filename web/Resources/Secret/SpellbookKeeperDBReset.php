@@ -34,10 +34,9 @@
                   school_id INT NOT NULL REFERENCES project1.schools(id),
                   source_id INT NOT NULL REFERENCES project1.sources(id),
                   casting_time_id INT NOT NULL REFERENCES project1.lengths(id),
-                  duration_id INT NOT NULL REFERENCES project1.lengths(id),
                   save_id INT REFERENCES project1.saves_attacks(id),
                   casting_time INT NOT NULL,
-                  duration DECIMAL NOT NULL,
+                  duration VARCHAR(100) NOT NULL,
                   lvl SMALLINT NOT NULL,
                   concentration BOOLEAN NOT NULL,
                   ritual BOOLEAN NOT NULL,
@@ -76,8 +75,6 @@
                $source_id = ($s == 'ee' ? "elemental evil player's companion" : ($s == 'phb' ? "player's handbook" : "sword coast adventurer's guide"));
                $c = explode(' ', strtolower($spell['casting_time']));
                $casting_id = implode(' ', array_slice($c, 1));
-               $d = explode(' ', strtolower($spell['duration']));
-               $duration_id = end($d);
                $lvl = (ctype_digit($spell['level'][0])? $spell['level'][0]:0);
                $consumed = preg_match('/(gp)/', $spell['material']);
                $r = explode(' ', $spell['range']);
@@ -89,19 +86,17 @@
                echo '<b>consumed:</b> ' . $consumed . '</br>';
                echo '<b>range_num:</b> ' . $range_num . '</br>';
                
-               $query = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc) 
+               $query = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc) 
                VALUES (:name, (SELECT id FROM project1.schools WHERE name=:school_id),
                (SELECT id FROM project1.sources WHERE name=:source_id),
                (SELECT id FROM project1.lengths WHERE name=:casting_id),
-               (SELECT id FROM project1.lengths WHERE name=:duration_id),
                :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc)');
                $query -> bindValue(':name', $spell['name'], PDO::PARAM_STR);
                $query -> bindValue(':school_id', strtolower($spell['school']), PDO::PARAM_STR);
                $query -> bindValue(':source_id', $source_id, PDO::PARAM_STR);
                $query -> bindValue(':casting_id', $casting_id, PDO::PARAM_STR);
-               $query -> bindValue(':duration_id', $duration_id, PDO::PARAM_STR);
                $query -> bindValue(':casting_time', $c[0], PDO::PARAM_INT);
-               $query -> bindValue(':duration', (ctype_digit($d[0])? $d[0] : 0), PDO::PARAM_STR);
+               $query -> bindValue(':duration', $spell['duration'], PDO::PARAM_STR);
                $query -> bindValue(':lvl', $lvl, PDO::PARAM_INT);
                $query -> bindValue(':components', $spell['components'], PDO::PARAM_STR);
                $query -> bindValue(':con', ($spell['concentration'] == 'yes' ? true : false), PDO::PARAM_BOOL);

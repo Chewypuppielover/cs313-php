@@ -38,10 +38,9 @@ CREATE TABLE project1.spells
    school_id INT NOT NULL REFERENCES project1.schools(id),
    source_id INT NOT NULL REFERENCES project1.sources(id),
    casting_time_id INT NOT NULL REFERENCES project1.lengths(id),
-   duration_id INT NOT NULL REFERENCES project1.lengths(id),
    save_id INT REFERENCES project1.saves_attacks(id),
    casting_time INT NOT NULL,
-   duration DECIMAL NOT NULL,
+   duration VARCHAR(100) NOT NULL,
    lvl SMALLINT NOT NULL, -- only need numbers 0 thru 10
    concentration BOOLEAN NOT NULL,
    ritual BOOLEAN NOT NULL,

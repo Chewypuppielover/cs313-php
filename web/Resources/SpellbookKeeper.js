@@ -15,8 +15,7 @@ function responseHandler(res) {
       row.source = ucwords(row.source);
       row.school = ucwords(row.school);
       row.casting_time_type = ucwords(row.casting_time_type);
-      row.duration = (row.duration == 0)? '':value;
-      row.duration_type = ucwords(row.duration_type);
+      row.duration = ucwords(row.duration_type);
       row.save_attack = ucwords(row.save_attack);
       row.lvl = (row.lvl == 0)? 'Cantrip': value;
    });
@@ -37,7 +36,7 @@ function detailFormatter(index, row) {
    html += '</br><b>Range:</b> ' + row.range + ' ' + row.range_type
    html += '</br><b>Components:</b> ' + row.components;
    html += row.component_desc && (' (' + row.component_desc + ')' + row.consumed && "(consumed)");
-   html += '</br><b>Duration:</b> ' + row.duration + ' ' + row.duration_type;
+   html += '</br><b>Duration:</b> ' + row.duration;
    html += '<p>' + row.description + '</br><b>At Higher Levels:</b> ' + row.higher_desc + '</p>';
    return html;
 }
@@ -92,12 +91,9 @@ function initTable() {
             align: "center"
          }, {
             title: "Duration",
-            //field: ["duration", "duration_type"],
+            field: "duration",
             sortable: true,
-            align: "center",
-            formatter: (value, row) => {
-               return ((row.duration=='0')?'':(row.duration + " ")) + row.duration_type;
-            }
+            align: "center"
          }, {
             title: "Save/Attack",
             field: "save_attack",

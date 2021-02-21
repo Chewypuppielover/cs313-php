@@ -1,8 +1,8 @@
 <?php 
    require('DBconnect.php');
    $db = get_db();
-   $insert = 'INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, save_id, area) 
-   VALUES (:name, :school_id, :source_id, :casting_id, :duration_id, :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc, :save_id, :area)';
+   $insert = 'INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, save_id, area) 
+   VALUES (:name, :school_id, :source_id, :casting_id, :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc, :save_id, :area)';
    try {
       $stm = $db->query('SELECT id, name FROM project1.schools');
       $schools = $stm -> fetchAll(PDO::FETCH_ASSOC);
@@ -30,7 +30,6 @@
          $query -> bindValue(':school_id', $_POST['school'], PDO::PARAM_INT);
          $query -> bindValue(':source_id', $_POST['source'], PDO::PARAM_INT);
          $query -> bindValue(':casting_id', $_POST['cast_id'], PDO::PARAM_INT);
-         $query -> bindValue(':duration_id', $_POST['time_id'], PDO::PARAM_INT);
          $query -> bindValue(':save_id', $_POST['save'], PDO::PARAM_INT);
          $query -> bindValue(':casting_time', $_POST['casting_time'], PDO::PARAM_INT);
          $query -> bindValue(':duration', $_POST['duration'], PDO::PARAM_STR);
@@ -93,12 +92,7 @@
       <label>Range: <input type='number' name='range'></input></label>
       <label><input type='text' name='range_type'></input></label></br>
       
-      <label>Duration: <input type='number' name='duration' required></input></label>
-      <label><select name='time_id'>
-         <?php foreach($lengths as $row) {
-            echo "<option value='" .$row['id']. "'>" .ucwords($row['name']). "</option>";
-         } ?>
-      </select></label></br>
+      <label>Duration: <input type='text' name='duration' required></input></label>
       
       <label>Area: <input type='text' name='area'></input></label></br>
    </fieldset>
