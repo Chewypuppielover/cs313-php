@@ -75,7 +75,7 @@
             $lvl = (ctype_digit($spells['level'][0]))? $spells['level'][0]:0;
             $consumed = str_contains($spells['material'], 'gp');
             $range_num = split(' ', $spells['range'])[0]
-            $range_num = (ctype_digit($range_num))?$range_num:0;
+            $range_num = (ctype_digit($range_num)?$range_num:0);
             
             $insert = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, area) 
             VALUES (:name, (SELECT id FROM project1.schools WHERE name=:school_id),
@@ -92,10 +92,10 @@
             $query -> bindValue(':duration', $split(' ', $spells['duration'])[0], PDO::PARAM_STR);
             $query -> bindValue(':lvl', $lvl, PDO::PARAM_INT);
             $query -> bindValue(':components', $spells['components'], PDO::PARAM_STR);
-            $query -> bindValue(':con', ($spells['concentration'] == 'yes')?true:false, PDO::PARAM_BOOL);
+            $query -> bindValue(':con', ($spells['concentration'] == 'yes'?true:false), PDO::PARAM_BOOL);
             $query -> bindValue(':ritual', ($spells['ritual'] == 'yes')?true:false, PDO::PARAM_BOOL);
             $query -> bindValue(':consumed', $consumed, PDO::PARAM_BOOL);
-            $query -> bindValue(':range', $range, PDO::PARAM_INT);
+            $query -> bindValue(':range', $range_num, PDO::PARAM_INT);
             $query -> bindValue(':range_type', split(' ', $spells['range'])[-1], PDO::PARAM_STR);
             $query -> bindValue(':component_desc', $spells['material'], PDO::PARAM_STR);
             $query -> bindValue(':description', $spells['desc'], PDO::PARAM_STR);
