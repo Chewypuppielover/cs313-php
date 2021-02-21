@@ -37,7 +37,8 @@ function detailFormatter(index, row) {
    html += '</br><b>Components:</b> ' + row.components;
    html += row.component_desc && (' (' + row.component_desc + ')' + row.consumed && "(consumed)");
    html += '</br><b>Duration:</b> ' + row.duration;
-   html += '<p>' + row.description + '</br><b>At Higher Levels:</b> ' + row.higher_desc + '</p>';
+   html += '<p>' + row.description + '</p>';
+   if(row.higher_desc) {html += '<p><b>At Higher Levels:</b> ' + row.higher_desc + '</p>';}
    return html;
 }
 function ucwords(str) {
