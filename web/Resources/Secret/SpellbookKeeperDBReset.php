@@ -74,9 +74,9 @@
                foreach($spell as $key => $value) echo $key . ': ' . $value . '</br>';
                $s = explode(' ', $spell['page'])[0];
                $source_id = ($s == 'ee' ? "elemental evil player's companion" : ($s == 'phb' ? "player's handbook" : "sword coast adventurer's guide"));
-               $c = explode(' ', strtolower($spell['casting_time']))
+               $c = explode(' ', strtolower($spell['casting_time']));
                $casting_id = implode(' ', array_slice($c, 1));
-               $d = explode(' ', strtolower($spell['duration']))
+               $d = explode(' ', strtolower($spell['duration']));
                $duration_id = end($d);
                $lvl = (ctype_digit($spell['level'][0])? $spell['level'][0]:0);
                $consumed = preg_match('/(gp)/', $spell['material']);
