@@ -94,13 +94,13 @@ function initTable() {
             field: "duration",
             sortable: true,
             align: "center"
-         }, {
+         }, /*{
             title: "Save/Attack",
             field: "save_attack",
             sortable: true,
             visible: false,
             align: "center"
-         }, {
+         },*/ {
             title: "Range",
             //field: ["range", "range_type"],
             sortable: true,
