@@ -30,7 +30,7 @@
          $query -> bindValue(':school_id', $_POST['school'], PDO::PARAM_INT);
          $query -> bindValue(':source_id', $_POST['source'], PDO::PARAM_INT);
          $query -> bindValue(':casting_id', $_POST['cast_id'], PDO::PARAM_INT);
-         $query -> bindValue(':save_id', $_POST['save'], PDO::PARAM_INT);
+         $query -> bindValue(':save_id', $_POST['save'], PDO::PARAM_STR);
          $query -> bindValue(':casting_time', $_POST['casting_time'], PDO::PARAM_INT);
          $query -> bindValue(':duration', $_POST['duration'], PDO::PARAM_STR);
          $query -> bindValue(':lvl', $_POST['level'], PDO::PARAM_INT);
