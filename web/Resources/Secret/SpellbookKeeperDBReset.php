@@ -72,7 +72,6 @@
             //print_r($spells);
             foreach($spells as $spell) {
                foreach($spell as $key => $value) echo $key . ': ' . $value . '</br>';
-               echo '<b>name:</b> ' . $name;
                $s = explode(' ', $spell['page'])[0];
                $source_id = ($s == 'ee' ? "elemental evil player's companion" : ($s == 'phb' ? "player's handbook" : "sword coast adventurer's guide"));
                $casting_id = implode(' ', array_slice(explode(' ', strtolower($spell['casting_time'])), 1));
@@ -81,6 +80,12 @@
                $consumed = preg_match('/(gp)/', $spell['material']);
                $rn = explode(' ', $spell['range'])[0];
                $range_num = (ctype_digit($rn) ? $rn : 0);
+               echo '<b>source_id:</b> ' . $source_id . '</br>';
+               echo '<b>duration_id:</b> ' . $duration_id . '</br>';
+               echo '<b>casting_id:</b> ' . $casting_id . '</br>';
+               echo '<b>lvl:</b> ' . $lvl . '</br>';
+               echo '<b>consumed:</b> ' . $consumed . '</br>';
+               echo '<b>range_num:</b> ' . $range_num . '</br>';
                
                $query = $db->prepare('INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, duration_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc) 
                VALUES (:name, (SELECT id FROM project1.schools WHERE name=:school_id),
