@@ -75,13 +75,12 @@
                $source_id = ($s == 'ee' ? "elemental evil player's companion" : ($s == 'phb' ? "player's handbook" : "sword coast adventurer's guide"));
                $c = explode(' ', strtolower($spell['casting_time']));
                $casting_id = implode(' ', array_slice($c, 1));
-               if(end($c) != 'action' && $c[size($c)-1] != 's') $casting_id += 's';
+               if(end($c) != 'action' && $c[strlen($c)-1] != 's') $casting_id += 's';
                $lvl = (ctype_digit($spell['level'][0])? $spell['level'][0]:0);
                $consumed = preg_match('/(gp)/', $spell['material']);
                $r = explode(' ', $spell['range']);
-               $range_num = (ctype_digit($rn[0]) ? $rn[0] : 0);
+               $range_num = (ctype_digit($r[0]) ? $r[0] : 0);
                echo '<b>source_id:</b> ' . $source_id . '</br>';
-               echo '<b>duration_id:</b> ' . $duration_id . '</br>';
                echo '<b>casting_id:</b> ' . $casting_id . '</br>';
                echo '<b>lvl:</b> ' . $lvl . '</br>';
                echo '<b>consumed:</b> ' . $consumed . '</br>';
