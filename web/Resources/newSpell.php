@@ -27,7 +27,7 @@
          print_r($_POST);
          $com = implode(", ", $_POST['components']);
          //echo $com . '</br>';
-         if($_POST['save'] == '') {
+         if($_POST['save'] != '') {
             echo 'query with save_id';
             $query = $db -> prepare($insertSave);
             $query -> bindValue(':save_id', $_POST['save'], PDO::PARAM_INT);
