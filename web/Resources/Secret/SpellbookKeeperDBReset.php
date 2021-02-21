@@ -75,6 +75,7 @@
                $source_id = ($s == 'ee' ? "elemental evil player's companion" : ($s == 'phb' ? "player's handbook" : "sword coast adventurer's guide"));
                $c = explode(' ', strtolower($spell['casting_time']));
                $casting_id = implode(' ', array_slice($c, 1));
+               if(end($c) != 'action' && $c[size($c)-1] != 's') $casting_id += 's';
                $lvl = (ctype_digit($spell['level'][0])? $spell['level'][0]:0);
                $consumed = preg_match('/(gp)/', $spell['material']);
                $r = explode(' ', $spell['range']);
