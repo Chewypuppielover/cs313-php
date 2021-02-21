@@ -72,10 +72,9 @@
             //print_r($spells);
             foreach($spells as $spell) {
                foreach($spell as $key => $value) echo $key . ': ' . $value . '</br>';
-               echo '<b>name</b>' . $spell['name'] . '<b>end</b></br>';
-               echo '</br>';
+               echo '<b>name:</b> ' . $name;
                $s = explode(' ', $spell['page'])[0];
-               $source = ($s == 'ee' ? "elemental evil player's companion" : ($s == 'phb' ? "player's handbook" : "sword coast adventurer's guide"));
+               $source_id = ($s == 'ee' ? "elemental evil player's companion" : ($s == 'phb' ? "player's handbook" : "sword coast adventurer's guide"));
                $casting_id = implode(' ', array_slice(explode(' ', strtolower($spell['casting_time'])), 1));
                $duration_id = end(explode(' ', strtolower($spell['duration'])));
                $lvl = (ctype_digit($spell['level'][0])? $spell['level'][0]:0);
@@ -91,9 +90,9 @@
                :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc)');
                $query -> bindValue(':name', $spell['name'], PDO::PARAM_STR);
                $query -> bindValue(':school_id', strtolower($spell['school']), PDO::PARAM_STR);
-               $query -> bindValue(':source_id', $source, PDO::PARAM_STR);
+               $query -> bindValue(':source_id', $source_id, PDO::PARAM_STR);
                $query -> bindValue(':casting_id', $casting_id, PDO::PARAM_STR);
-               $query -> bindValue(':duration_id', $duration, PDO::PARAM_STR);
+               $query -> bindValue(':duration_id', $duration_id, PDO::PARAM_STR);
                $query -> bindValue(':casting_time', explode(' ', $spell['casting_time'])[0], PDO::PARAM_INT);
                $query -> bindValue(':duration', explode(' ', $spell['duration'])[0], PDO::PARAM_STR);
                $query -> bindValue(':lvl', $lvl, PDO::PARAM_INT);
