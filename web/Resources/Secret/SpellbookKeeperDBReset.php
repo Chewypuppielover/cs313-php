@@ -71,7 +71,7 @@
             //echo "</br>Spells: ";
             //print_r($spells);
             foreach($spells as $spell) {
-               print_r($spell);
+               foreach($spell as $key => $value) echo $key . ': ' . $value . '</br>';
                echo '</br>';
                $s = explode(' ', $spell['page'])[0];
                $source = ($s == 'ee' ? "elemental evil player's companion" : ($s == 'phb' ? "player's handbook" : "sword coast adventurer's guide"));
