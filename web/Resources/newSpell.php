@@ -1,8 +1,10 @@
 <?php 
    require('DBconnect.php');
    $db = get_db();
-   $insert = 'INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, save_id, area) 
+   $insertSave = 'INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, save_id, area) 
    VALUES (:name, :school_id, :source_id, :casting_id, :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc, :save_id, :area)';
+   $insert = 'INSERT INTO project1.spells (name, school_id, source_id, casting_time_id, casting_time, duration, lvl, concentration, ritual, range, range_type, components, component_desc, consumed, description, higher_desc, area) 
+   VALUES (:name, :school_id, :source_id, :casting_id, :casting_time, :duration, :lvl, :con, :ritual, :range, :range_type, :components, :component_desc, :consumed, :description, :higher_desc, :area)';
    try {
       $stm = $db->query('SELECT id, name FROM project1.schools');
       $schools = $stm -> fetchAll(PDO::FETCH_ASSOC);
@@ -25,12 +27,14 @@
          print_r($_POST);
          $com = implode(", ", $_POST['components']);
          //echo $com . '</br>';
-         $query = $db -> prepare($insert);
+         if($_POST['save'] == '') {
+            $query = $db -> prepare($insertSave);
+            $query -> bindValue(':save_id', $_POST['save'], PDO::PARAM_INT);
+         } else { $query = $db -> prepare($insert); }
          $query -> bindValue(':name', $_POST['name'], PDO::PARAM_STR);
          $query -> bindValue(':school_id', $_POST['school'], PDO::PARAM_INT);
          $query -> bindValue(':source_id', $_POST['source'], PDO::PARAM_INT);
          $query -> bindValue(':casting_id', $_POST['cast_id'], PDO::PARAM_INT);
-         $query -> bindValue(':save_id', $_POST['save'], PDO::PARAM_STR);
          $query -> bindValue(':casting_time', $_POST['casting_time'], PDO::PARAM_INT);
          $query -> bindValue(':duration', $_POST['duration'], PDO::PARAM_STR);
          $query -> bindValue(':lvl', $_POST['level'], PDO::PARAM_INT);
